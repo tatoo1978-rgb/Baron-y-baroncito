@@ -41,6 +41,8 @@ a{color:inherit;text-decoration:none}
 a:hover{color:#765E36}
 h1,h2,h3,p{margin:0}
 summary::-webkit-details-marker{display:none}
+input[type=date]::-webkit-date-and-time-value{text-align:left;min-height:1.4em}
+input[type=date]::-webkit-calendar-picker-indicator{position:absolute;inset:0;width:auto;height:auto;opacity:0;cursor:pointer}
 details[open]>summary>span{transform:rotate(45deg)}
 ::selection{background:#E6D6B8;color:#111111}
 </style>
@@ -533,7 +535,11 @@ details[open]>summary>span{transform:rotate(45deg)}
         </sc-for>
       </div></sc-if>
       <label style="margin-top:18px;display:block;font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#4A4642">Fecha del evento
-        <input ref="{{ dateRef }}" type="date" value="{{ date }}" onChange="{{ setDate }}" style="margin-top:8px;display:block;width:100%;height:48px;padding:0 14px;background:#FBF9F5;border:1px solid #DDD4C5;border-radius:0;font-family:'Manrope',sans-serif;font-size:15px;color:#111111">
+        <span style="position:relative;display:block;margin-top:8px;width:100%">
+          <input ref="{{ dateRef }}" type="date" value="{{ date }}" onChange="{{ setDate }}" aria-label="Fecha del evento" style="display:block;box-sizing:border-box;width:100%;min-width:0;max-width:100%;height:48px;margin:0;padding:0 48px 0 14px;-webkit-appearance:none;appearance:none;background:#FBF9F5;border:1px solid #DDD4C5;border-radius:0;font-family:'Manrope',sans-serif;font-size:16px;line-height:48px;letter-spacing:normal;text-transform:none;color:#111111;text-align:left">
+          <sc-if value="{{ noDate }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="position:absolute;left:15px;top:0;height:48px;display:flex;align-items:center;pointer-events:none;font-family:'Manrope',sans-serif;font-size:16px;font-weight:400;letter-spacing:normal;text-transform:none;color:#4A4642">Elegí la fecha</span></sc-if>
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#765E36" stroke-width="1.6" stroke-linecap="round" style="position:absolute;right:14px;top:14px;pointer-events:none"><rect x="3.5" y="5" width="17" height="15.5" rx="1"></rect><path d="M3.5 10h17M8 3v4M16 3v4"></path></svg>
+        </span>
       </label>
       <a href="{{ wa.current }}" target="{{ waTarget }}" rel="noopener" style="margin-top:18px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;background:#111111;color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase" style-hover="background:#1A1918;color:#F5F2EC"><span style="width:8px;height:8px;border-radius:50%;background:#25D366"></span>Enviar por WhatsApp</a>
     </div>
@@ -719,7 +725,7 @@ class Component extends DCLogic {
       : { cols: 'repeat(5,minmax(0,1fr))', gap: '24px', dir: 'column', align: 'center', text: 'center', innerGap: '26px', textPad: '0', line: 'top:28px;left:10%;right:10%;height:1px' };
 
     return {
-      isMobile: m, isDesktop: !m, menuOpen: menu && m, waTarget: (typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) ? '_self' : '_blank', panelOpen: panel, ask, askGeneral: (ev) => this.askFor('general', ev), dateRef: this.dateRef, showTopics: !dOnly,
+      isMobile: m, isDesktop: !m, menuOpen: menu && m, waTarget: (typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) ? '_self' : '_blank', noDate: !date, panelOpen: panel, ask, askGeneral: (ev) => this.askFor('general', ev), dateRef: this.dateRef, showTopics: !dOnly,
       panelEyebrow: dOnly ? LBL[topic] : 'Consulta rápida', panelTitle: dOnly ? '¿Cuándo es tu evento?' : '¿Para qué ocasión?',
       hdr, wa, topics, filters, gallery, stepList, steps, date,
       lbOpen: !!lbItem, lb, lbImg: lbItem ? React.createElement('img', { key: lb.big, src: lb.big, alt: lb.label, onClick: lbStop, style: { display: 'block', maxWidth: 'min(100%,1200px)', maxHeight: 'calc(100svh - 190px)', width: 'auto', height: 'auto', objectFit: 'contain', cursor: 'default', boxShadow: '0 30px 80px rgba(0,0,0,.5)' } }) : null, lbClose, lbStop, lbPrev, lbNext,

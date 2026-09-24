@@ -400,9 +400,6 @@ h1,h2,h3,p{margin:0}
           <p style="font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#5A5550">Horarios de atención</p>
           <div style="margin-top:12px;display:grid;grid-template-columns:auto 1fr;column-gap:28px;row-gap:6px;font-size:16px;line-height:1.5"><span>Lunes a viernes</span><span>9:30 – 19:00</span><span>Sábados</span><span>10:00 – 12:30</span><span style="color:#5A5550">Domingos</span><span style="color:#5A5550">Cerrado</span></div>
         </div>
-        <div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:12px">
-          <a href="{{ wa.general }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 28px;background:#111111;color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .3s" style-hover="background:#2E2C2A;color:#F5F2EC"><span style="width:7px;height:7px;border-radius:50%;background:#25D366"></span>Consultar por WhatsApp</a>
-        </div>
       </div>
       <div style="padding:{{ ubic.mapPad }};display:flex;align-items:center">
         <div style="position:relative;width:100%;height:clamp(380px,42vw,600px);border-radius:20px;overflow:hidden;background:#D9D0C1;box-shadow:0 30px 70px -30px rgba(17,17,17,.35), 0 2px 8px rgba(17,17,17,.06)">
@@ -419,7 +416,7 @@ h1,h2,h3,p{margin:0}
         <span style="display:block;width:9px;height:9px;margin:0 auto;border:1px solid #C9AE7E;transform:rotate(45deg)"></span>
         <h2 id="t-final" style="margin-top:32px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(46px,7.6vw,112px);line-height:.95;letter-spacing:-.02em;text-wrap:balance">Tu próximo evento <em style="color:#E6D6B8">merece un buen traje.</em></h2>
         <p style="margin:28px auto 0;max-width:560px;font-size:clamp(15px,1.3vw,18px);line-height:1.6;color:#DCD5C9;text-wrap:pretty">Consultanos, contanos qué evento tenés y te ayudamos a encontrar el look adecuado.</p>
-        <a href="{{ wa.general }}" target="_blank" rel="noopener" style="pointer-events:auto;margin-top:44px;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:66px;padding:0 clamp(28px,4vw,52px);background:#F5F2EC;color:#111111;font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;transition:background .3s" style-hover="background:#E3D6BF;color:#111111"><span style="width:8px;height:8px;border-radius:50%;background:#25D366"></span>Consultar por WhatsApp</a>
+        <button type="button" onClick="{{ togglePanel }}" style="pointer-events:auto;margin-top:44px;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:66px;padding:0 clamp(28px,4vw,52px);background:#F5F2EC;color:#111111;font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;transition:background .3s;border:0;font-family:'Manrope',sans-serif;cursor:pointer" style-hover="background:#E3D6BF;color:#111111"><span style="width:8px;height:8px;border-radius:50%;background:#25D366"></span>Consultar por WhatsApp</button>
         <p style="margin-top:28px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#BFB7AA">Barón &amp; Baroncito · Sarmiento 1311 · Rosario</p>
       </div>
     </section>

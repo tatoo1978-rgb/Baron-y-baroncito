@@ -491,7 +491,7 @@ details[open]>summary>span{transform:rotate(45deg)}
       </nav>
       <div style="display:flex;flex-direction:column;gap:8px;font-size:15px">
         <p style="font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#C9AE7E;margin-bottom:6px">Contacto</p>
-        <a href="{{ wa.general }}" target="_blank" rel="noopener">WhatsApp · {{ waDisplay }}</a>
+        <a href="{{ wa.general }}" target="{{ waTarget }}" rel="noopener">WhatsApp · {{ waDisplay }}</a>
         <a href="{{ social.instagram }}" target="_blank" rel="noopener">Instagram</a>
         <a href="{{ social.facebook }}" target="_blank" rel="noopener">Facebook</a>
       </div>
@@ -535,7 +535,7 @@ details[open]>summary>span{transform:rotate(45deg)}
       <label style="margin-top:18px;display:block;font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#4A4642">Fecha del evento
         <input ref="{{ dateRef }}" type="date" value="{{ date }}" onChange="{{ setDate }}" style="margin-top:8px;display:block;width:100%;height:48px;padding:0 14px;background:#FBF9F5;border:1px solid #DDD4C5;border-radius:0;font-family:'Manrope',sans-serif;font-size:15px;color:#111111">
       </label>
-      <a href="{{ wa.current }}" target="_blank" rel="noopener" style="margin-top:18px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;background:#111111;color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase" style-hover="background:#1A1918;color:#F5F2EC"><span style="width:8px;height:8px;border-radius:50%;background:#25D366"></span>Enviar por WhatsApp</a>
+      <a href="{{ wa.current }}" target="{{ waTarget }}" rel="noopener" style="margin-top:18px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;background:#111111;color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase" style-hover="background:#1A1918;color:#F5F2EC"><span style="width:8px;height:8px;border-radius:50%;background:#25D366"></span>Enviar por WhatsApp</a>
     </div>
   </sc-if>
 
@@ -548,7 +548,7 @@ details[open]>summary>span{transform:rotate(45deg)}
 class Component extends DCLogic {
   dateRef = React.createRef();
   askFor(k, ev) {
-    if (!(this.props.quickPanel ?? true)) { if (ev && ev.currentTarget && ev.currentTarget.target !== '_blank') { ev.preventDefault(); window.open(ev.currentTarget.href, '_blank', 'noopener'); } return; }
+    if (!(this.props.quickPanel ?? true)) { if (ev && ev.currentTarget && ev.currentTarget.target !== '_blank') { ev.preventDefault(); window.location.href = ev.currentTarget.href; } return; }
     if (ev) ev.preventDefault();
     this.setState({ panel: true, dateOnly: k !== 'general', topic: k, menu: false }, () => {
       const el = this.dateRef.current; if (!el || k === 'general') return;
@@ -613,7 +613,9 @@ class Component extends DCLogic {
     let f = '[FECHA]';
     if (date) { const [y, m, d] = date.split('-'); f = `${d}/${m}/${y}`; }
     const msg = `Hola Barón & Baroncito. Quisiera consultar por ${what}. Tengo un evento el ${f} y necesito asesoramiento.`;
-    return `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
+    const q = `phone=${num}&text=${encodeURIComponent(msg)}`;
+    const mob = typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+    return mob ? `whatsapp://send?${q}` : `https://web.whatsapp.com/send?${q}`;
   }
 
   renderVals() {
@@ -635,7 +637,7 @@ class Component extends DCLogic {
     wa.current = this.waLink(topic, date);
     const quick = this.props.quickPanel ?? true;
     const togglePanel = () => {
-      if (!quick) { window.open(wa.general, '_blank', 'noopener'); return; }
+      if (!quick) { window.location.href = wa.general; return; }
       this.setState(s => ({ panel: !s.panel, dateOnly: false }));
     };
     const LBL = { novio: 'Novios', padrinos: 'Padrinos', graduacion: 'Graduación', evento: 'Eventos y fiestas', ninos: 'Niños', talle: 'Consulta de talle' };
@@ -717,7 +719,7 @@ class Component extends DCLogic {
       : { cols: 'repeat(5,minmax(0,1fr))', gap: '24px', dir: 'column', align: 'center', text: 'center', innerGap: '26px', textPad: '0', line: 'top:28px;left:10%;right:10%;height:1px' };
 
     return {
-      isMobile: m, isDesktop: !m, menuOpen: menu && m, panelOpen: panel, ask, askGeneral: (ev) => this.askFor('general', ev), dateRef: this.dateRef, showTopics: !dOnly,
+      isMobile: m, isDesktop: !m, menuOpen: menu && m, waTarget: (typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) ? '_self' : '_blank', panelOpen: panel, ask, askGeneral: (ev) => this.askFor('general', ev), dateRef: this.dateRef, showTopics: !dOnly,
       panelEyebrow: dOnly ? LBL[topic] : 'Consulta rápida', panelTitle: dOnly ? '¿Cuándo es tu evento?' : '¿Para qué ocasión?',
       hdr, wa, topics, filters, gallery, stepList, steps, date,
       lbOpen: !!lbItem, lb, lbImg: lbItem ? React.createElement('img', { key: lb.big, src: lb.big, alt: lb.label, onClick: lbStop, style: { display: 'block', maxWidth: 'min(100%,1200px)', maxHeight: 'calc(100svh - 190px)', width: 'auto', height: 'auto', objectFit: 'contain', cursor: 'default', boxShadow: '0 30px 80px rgba(0,0,0,.5)' } }) : null, lbClose, lbStop, lbPrev, lbNext,

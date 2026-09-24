@@ -39,10 +39,11 @@ html{scroll-behavior:smooth;scroll-padding-top:76px}
 *{box-sizing:border-box}
 body{margin:0;background:#F5F2EC;color:#111111;font-family:'Manrope',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{color:inherit;text-decoration:none}
-a:hover{color:#A88B5C}
+a:hover{color:#765E36}
 h1,h2,h3,p{margin:0}
 summary::-webkit-details-marker{display:none}
-::selection{background:#D9CBB2;color:#111}
+details[open]>summary>span{transform:rotate(45deg)}
+::selection{background:#E6D6B8;color:#111111}
 </style>
 </helmet>
 
@@ -66,7 +67,7 @@ summary::-webkit-details-marker{display:none}
           <a href="#como-funciona" style="color:inherit" style-hover="opacity:.6">Cómo funciona</a>
           <a href="#contacto" style="color:inherit" style-hover="opacity:.6">Contacto</a>
         </nav>
-        <a href="{{ wa.general }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:13px 20px;border:1px solid {{ hdr.btnLine }};color:inherit;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;transition:all .3s" style-hover="background:#A88B5C;border-color:#A88B5C;color:#111111">
+        <a href="{{ wa.general }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:13px 20px;border:1px solid {{ hdr.btnLine }};color:inherit;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;transition:all .3s" style-hover="background:#C9AE7E;border-color:#C9AE7E;color:#111111">
           <span style="width:7px;height:7px;border-radius:50%;background:#25D366"></span>
           Consultar por WhatsApp
         </a>
@@ -106,7 +107,7 @@ summary::-webkit-details-marker{display:none}
     <!-- HERO -->
     <section aria-label="Presentación" style="position:relative;height:100svh;min-height:500px;max-height:1100px;background:#111111;color:#F5F2EC;overflow:hidden">
       <div style="position:absolute;inset:0">
-        <image-slot id="hero-principal" src="./img/hero-principal.webp" style="object-position:50% 25%" shape="rect" placeholder="FOTO HERO · Novio o caballero con smoking negro · editorial, luz cinematográfica · vertical en mobile"></image-slot>
+        <img src="./img/hero-principal.webp" alt="Caballero con traje negro y moño" fetchpriority="high" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%">
       </div>
       <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(10,10,9,.6) 0%, rgba(10,10,9,.15) 22%, rgba(10,10,9,.45) 50%, rgba(10,10,9,.88) 78%, rgba(10,10,9,.95) 100%)"></div>
       <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg, rgba(10,10,9,.7) 0%, rgba(10,10,9,.35) 45%, rgba(10,10,9,0) 75%)"></div>
@@ -120,7 +121,7 @@ summary::-webkit-details-marker{display:none}
           </h1>
           <p style="margin-top:clamp(12px,2.4vh,24px);max-width:520px;font-size:clamp(16px,1.4vw,19px);line-height:1.6;color:#F5F2EC;text-wrap:pretty">Trajes, smokings y looks de etiqueta para novios, padrinos, graduaciones, fiestas de 15 y eventos especiales.</p>
           <div style="margin-top:clamp(18px,3.4vh,34px);display:flex;flex-wrap:wrap;gap:12px;pointer-events:auto;text-shadow:none">
-            <a href="{{ wa.general }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 28px;width:{{ hero.btnW }};background:#F5F2EC;color:#111111;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .3s" style-hover="background:#E3D6BF;color:#111111">Consultar disponibilidad</a>
+            <a href="{{ wa.general }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 28px;width:{{ hero.btnW }};background:#F5F2EC;color:#111111;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .3s" style-hover="background:#E6D6B8;color:#111111">Consultar disponibilidad</a>
             <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}"><a href="#trajes" style="display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 32px;border:1px solid rgba(245,242,236,.55);color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:border-color .3s" style-hover="border-color:#F5F2EC;color:#F5F2EC">Ver trajes</a></sc-if>
             <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><a href="#trajes" style="display:inline-flex;align-items:center;min-height:44px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#F5F2EC;border-bottom:1px solid #D8C29A">Ver trajes →</a></sc-if>
           </div>
@@ -130,14 +131,14 @@ summary::-webkit-details-marker{display:none}
     </section>
 
     <!-- CONFIANZA -->
-    <section aria-labelledby="t-confianza" style="padding:clamp(72px,9vw,120px) clamp(22px,5vw,64px);border-bottom:1px solid #E2DBCF">
+    <section aria-labelledby="t-confianza" style="padding:clamp(72px,9vw,120px) clamp(22px,5vw,64px);border-bottom:1px solid #DDD4C5">
       <div data-reveal="" style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(40px,6vw,96px);align-items:end">
         <h2 id="t-confianza" style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(36px,4.6vw,60px);line-height:1.02;letter-spacing:-.01em;text-wrap:balance">Trajes de etiqueta para <em>momentos importantes.</em></h2>
         <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));column-gap:40px">
-          <li style="display:flex;gap:16px;align-items:center;padding:20px 0;border-top:1px solid #D9D0C1;font-size:15px;line-height:1.4"><span style="flex:none;width:9px;height:9px;border:1px solid #A88B5C;transform:rotate(45deg)"></span>Asesoramiento personalizado</li>
-          <li style="display:flex;gap:16px;align-items:center;padding:20px 0;border-top:1px solid #D9D0C1;font-size:15px;line-height:1.4"><span style="flex:none;width:9px;height:9px;border:1px solid #A88B5C;transform:rotate(45deg)"></span>Prueba y elección de talle</li>
-          <li style="display:flex;gap:16px;align-items:center;padding:20px 0;border-top:1px solid #D9D0C1;font-size:15px;line-height:1.4"><span style="flex:none;width:9px;height:9px;border:1px solid #A88B5C;transform:rotate(45deg)"></span>Adultos, adolescentes y niños</li>
-          <li style="display:flex;gap:16px;align-items:center;padding:20px 0;border-top:1px solid #D9D0C1;font-size:15px;line-height:1.4"><span style="flex:none;width:9px;height:9px;border:1px solid #A88B5C;transform:rotate(45deg)"></span>Atención para novios, padrinos y eventos</li>
+          <li style="display:flex;gap:16px;align-items:center;padding:20px 0;border-top:1px solid #DDD4C5;font-size:15px;line-height:1.4"><span style="flex:none;width:9px;height:9px;border:1px solid #765E36;transform:rotate(45deg)"></span>Asesoramiento personalizado</li>
+          <li style="display:flex;gap:16px;align-items:center;padding:20px 0;border-top:1px solid #DDD4C5;font-size:15px;line-height:1.4"><span style="flex:none;width:9px;height:9px;border:1px solid #765E36;transform:rotate(45deg)"></span>Prueba y elección de talle</li>
+          <li style="display:flex;gap:16px;align-items:center;padding:20px 0;border-top:1px solid #DDD4C5;font-size:15px;line-height:1.4"><span style="flex:none;width:9px;height:9px;border:1px solid #765E36;transform:rotate(45deg)"></span>Adultos, adolescentes y niños</li>
+          <li style="display:flex;gap:16px;align-items:center;padding:20px 0;border-top:1px solid #DDD4C5;font-size:15px;line-height:1.4"><span style="flex:none;width:9px;height:9px;border:1px solid #765E36;transform:rotate(45deg)"></span>Atención para novios, padrinos y eventos</li>
         </ul>
       </div>
     </section>
@@ -147,60 +148,60 @@ summary::-webkit-details-marker{display:none}
       <div style="max-width:1400px;margin:0 auto">
         <div data-reveal="" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px;padding:0 6px;margin-bottom:clamp(36px,5vw,64px)">
           <div>
-            <p style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#80683F">Para cada ocasión</p>
+            <p style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#765E36">Para cada ocasión</p>
             <h2 id="t-ocasiones" style="margin-top:16px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(42px,6vw,84px);line-height:.98;letter-spacing:-.015em">Un traje para <em>cada momento</em></h2>
           </div>
           <p style="max-width:340px;font-size:16px;line-height:1.6;color:#4A4642">Elegí la ocasión y te asesoramos sobre el estilo, el talle y la combinación.</p>
         </div>
         <div style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(8px,1vw,14px)">
           <article data-reveal="" style="grid-column:span {{ oc.s1 }};height:{{ oc.hBig }};position:relative;overflow:hidden;background:#1A1918;color:#F5F2EC">
-            <div style="position:absolute;inset:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><image-slot id="oc-novios" src="https://images.unsplash.com/photo-1755537131223-7c1b667696fd?w=1400&q=70&auto=format&fit=crop" credit="Photo by Divaris Shirichena on Unsplash" credit-href="https://unsplash.com/@divaris" shape="rect" placeholder="NOVIOS · novio con traje, retrato editorial vertical"></image-slot></div>
+            <div style="position:absolute;inset:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><img src="./img/novio-traje-azul.webp" alt="Novio con traje azul, moño y boutonnière" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 15%"></div>
             <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,10,9,0) 35%,rgba(10,10,9,.6) 62%,rgba(10,10,9,.92) 100%)"></div>
             <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(20px,2.4vw,36px);pointer-events:none">
-              <p style="font-size:12px;letter-spacing:.3em;color:#D8C29A">01</p>
+              <p style="font-size:12px;letter-spacing:.3em;color:#C9AE7E">01</p>
               <h3 style="margin-top:10px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(34px,3.6vw,52px);line-height:1">Novios</h3>
               <p style="margin-top:10px;max-width:340px;font-size:16px;line-height:1.5;color:#F5F2EC">El traje que acompaña uno de los días más importantes.</p>
-              <a href="#novios" style="pointer-events:auto;display:inline-flex;align-items:center;gap:10px;margin-top:18px;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#F5F2EC;border-bottom:1px solid #D8C29A" style-hover="color:#D8C29A">Ver opciones →</a>
+              <a href="#novios" style="pointer-events:auto;display:inline-flex;align-items:center;gap:10px;margin-top:18px;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#F5F2EC;border-bottom:1px solid #C9AE7E" style-hover="color:#C9AE7E">Ver opciones →</a>
             </div>
           </article>
           <article data-reveal="" style="grid-column:span {{ oc.s2 }};height:{{ oc.hMid }};position:relative;overflow:hidden;background:#1A1918;color:#F5F2EC">
-            <div style="position:absolute;inset:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><image-slot id="oc-padrinos" src="https://images.unsplash.com/photo-1664646326780-e67cf77a24d1?w=1400&q=70&auto=format&fit=crop" credit="Photo by Christophe Dusabe on Unsplash" credit-href="https://unsplash.com/@bronzeshooter" shape="rect" placeholder="PADRINOS · grupo con trajes coordinados"></image-slot></div>
+            <div style="position:absolute;inset:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><img src="https://images.unsplash.com/photo-1664646326780-e67cf77a24d1?w=1400&q=70&auto=format&fit=crop" alt="Novio y padrinos con trajes coordinados" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;object-position:47% 30%"></div>
             <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,10,9,0) 30%,rgba(10,10,9,.6) 60%,rgba(10,10,9,.92) 100%)"></div>
             <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(16px,2.4vw,36px);pointer-events:none">
-              <p style="font-size:12px;letter-spacing:.3em;color:#D8C29A">02</p>
+              <p style="font-size:12px;letter-spacing:.3em;color:#C9AE7E">02</p>
               <h3 style="margin-top:8px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(26px,3.6vw,52px);line-height:1">Padrinos</h3>
               <p style="margin-top:8px;max-width:340px;font-size:16px;line-height:1.5;color:#F5F2EC">Elegancia y coordinación para acompañar al novio.</p>
-              <a href="#padrinos" style="pointer-events:auto;display:inline-flex;align-items:center;margin-top:12px;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#F5F2EC;border-bottom:1px solid #D8C29A" style-hover="color:#D8C29A">Ver opciones →</a>
+              <a href="#padrinos" style="pointer-events:auto;display:inline-flex;align-items:center;margin-top:12px;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#F5F2EC;border-bottom:1px solid #C9AE7E" style-hover="color:#C9AE7E">Ver opciones →</a>
             </div>
           </article>
           <article data-reveal="" style="grid-column:span {{ oc.s3 }};height:{{ oc.hSmall }};position:relative;overflow:hidden;background:#1A1918;color:#F5F2EC">
-            <div style="position:absolute;inset:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><image-slot id="oc-graduaciones" src="./img/graduacion-1x1.webp" shape="rect" placeholder="GRADUACIONES · joven con traje"></image-slot></div>
+            <div style="position:absolute;inset:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><img src="./img/graduacion-1x1.webp" alt="Joven con traje negro para su graduación" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 14%"></div>
             <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,10,9,0) 25%,rgba(10,10,9,.6) 55%,rgba(10,10,9,.92) 100%)"></div>
             <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(16px,2vw,30px);pointer-events:none">
-              <p style="font-size:12px;letter-spacing:.3em;color:#D8C29A">03</p>
+              <p style="font-size:12px;letter-spacing:.3em;color:#C9AE7E">03</p>
               <h3 style="margin-top:8px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(26px,2.8vw,40px);line-height:1">Graduaciones</h3>
               <p style="margin-top:8px;font-size:16px;line-height:1.5;color:#F5F2EC">Un look especial para celebrar un logro importante.</p>
-              <a href="#graduaciones" style="pointer-events:auto;display:inline-flex;align-items:center;margin-top:12px;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#F5F2EC;border-bottom:1px solid #D8C29A" style-hover="color:#D8C29A">Ver opciones →</a>
+              <a href="#graduaciones" style="pointer-events:auto;display:inline-flex;align-items:center;margin-top:12px;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#F5F2EC;border-bottom:1px solid #C9AE7E" style-hover="color:#C9AE7E">Ver opciones →</a>
             </div>
           </article>
           <article data-reveal="" style="grid-column:span {{ oc.s4 }};height:{{ oc.hSmall }};position:relative;overflow:hidden;background:#1A1918;color:#F5F2EC">
-            <div style="position:absolute;inset:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><image-slot id="oc-eventos" src="https://images.unsplash.com/photo-1477901018075-269f9e586643?w=900&q=70&auto=format&fit=crop" credit="Photo by Jason Briscoe on Unsplash" credit-href="https://unsplash.com/@jsnbrsc" shape="rect" placeholder="EVENTOS Y FIESTAS · smoking en celebración"></image-slot></div>
+            <div style="position:absolute;inset:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><img src="./img/eventos-fiesta.webp" alt="Invitado con saco bordó y camisa negra en una fiesta" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;object-position:55% 8%"></div>
             <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,10,9,0) 25%,rgba(10,10,9,.6) 55%,rgba(10,10,9,.92) 100%)"></div>
             <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(16px,2vw,30px);pointer-events:none">
-              <p style="font-size:12px;letter-spacing:.3em;color:#D8C29A">04</p>
+              <p style="font-size:12px;letter-spacing:.3em;color:#C9AE7E">04</p>
               <h3 style="margin-top:8px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(26px,2.8vw,40px);line-height:1">Eventos y fiestas</h3>
               <p style="margin-top:8px;font-size:16px;line-height:1.5;color:#F5F2EC">Trajes y looks de etiqueta para ocasiones especiales.</p>
-              <a href="#graduaciones" style="pointer-events:auto;display:inline-flex;align-items:center;margin-top:12px;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#F5F2EC;border-bottom:1px solid #D8C29A" style-hover="color:#D8C29A">Ver opciones →</a>
+              <a href="#graduaciones" style="pointer-events:auto;display:inline-flex;align-items:center;margin-top:12px;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#F5F2EC;border-bottom:1px solid #C9AE7E" style-hover="color:#C9AE7E">Ver opciones →</a>
             </div>
           </article>
           <article data-reveal="" style="grid-column:span {{ oc.s5 }};height:{{ oc.hSmall }};position:relative;overflow:hidden;background:#1A1918;color:#F5F2EC">
-            <div style="position:absolute;inset:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><image-slot id="oc-ninos" src="./img/nino-traje-azul.webp" shape="rect" placeholder="NIÑOS · traje infantil"></image-slot></div>
+            <div style="position:absolute;inset:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"><img src="./img/nino-traje-azul.webp" alt="Niño con traje azul y moño" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0%"></div>
             <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,10,9,0) 25%,rgba(10,10,9,.6) 55%,rgba(10,10,9,.92) 100%)"></div>
             <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(16px,2vw,30px);pointer-events:none">
-              <p style="font-size:12px;letter-spacing:.3em;color:#D8C29A">05</p>
+              <p style="font-size:12px;letter-spacing:.3em;color:#C9AE7E">05</p>
               <h3 style="margin-top:8px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(26px,2.8vw,40px);line-height:1">Niños</h3>
               <p style="margin-top:8px;font-size:16px;line-height:1.5;color:#F5F2EC">Elegancia también para los más chicos.</p>
-              <a href="#ninos" style="pointer-events:auto;display:inline-flex;align-items:center;margin-top:12px;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#F5F2EC;border-bottom:1px solid #D8C29A" style-hover="color:#D8C29A">Ver opciones →</a>
+              <a href="#ninos" style="pointer-events:auto;display:inline-flex;align-items:center;margin-top:12px;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#F5F2EC;border-bottom:1px solid #C9AE7E" style-hover="color:#C9AE7E">Ver opciones →</a>
             </div>
           </article>
         </div>
@@ -211,7 +212,7 @@ summary::-webkit-details-marker{display:none}
     <section id="trajes" aria-labelledby="t-galeria" style="padding:clamp(80px,10vw,140px) clamp(16px,4vw,48px);background:#ECE6DB">
       <div style="max-width:1400px;margin:0 auto">
         <div data-reveal="" style="text-align:center;max-width:760px;margin:0 auto">
-          <p style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#80683F">Galería</p>
+          <p style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#765E36">Galería</p>
           <h2 id="t-galeria" style="margin-top:16px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(42px,6vw,84px);line-height:.98;letter-spacing:-.015em;text-wrap:balance">El look empieza <em>con el traje.</em></h2>
           <p style="margin-top:18px;font-size:17px;line-height:1.6;color:#4A4642">Encontrá el estilo que mejor representa la ocasión.</p>
         </div>
@@ -222,11 +223,11 @@ summary::-webkit-details-marker{display:none}
         </div>
         <div style="display:grid;grid-template-columns:repeat({{ gal.cols }},minmax(0,1fr));grid-auto-rows:{{ gal.row }};grid-auto-flow:dense;gap:clamp(8px,1vw,14px)">
           <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="8">
-            <figure onMouseEnter="{{ g.enter }}" onMouseLeave="{{ g.leave }}" style="margin:0;grid-column:span {{ g.cs }};grid-row:span {{ g.rs }};position:relative;overflow:hidden;background:#D9D0C1">
-              <div style="position:absolute;inset:0;transform:scale({{ g.scale }});transition:transform 1.2s cubic-bezier(.2,.7,.2,1)"><image-slot id="{{ g.id }}" src="{{ g.src }}" credit="{{ g.credit }}" credit-href="{{ g.creditHref }}" shape="rect" placeholder="{{ g.ph }}"></image-slot></div>
+            <figure onMouseEnter="{{ g.enter }}" onMouseLeave="{{ g.leave }}" onClick="{{ g.open }}" onKeyDown="{{ g.key }}" role="button" tabIndex="0" aria-label="Ampliar foto: {{ g.label }}" style="margin:0;grid-column:{{ g.gc }};grid-row:{{ g.gr }};position:relative;overflow:hidden;background:#DDD4C5;cursor:zoom-in">
+              <div style="position:absolute;inset:0;transform:scale({{ g.scale }});transition:transform 1.2s cubic-bezier(.2,.7,.2,1)"><img src="{{ g.src }}" alt="{{ g.label }}" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover;object-position:{{ g.pos }}"></div>
               <figcaption style="position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(14px,1.8vw,24px);background:linear-gradient(180deg,rgba(17,17,17,0) 40%,rgba(17,17,17,.78) 100%);opacity:{{ g.op }};transition:opacity .6s ease;color:#F5F2EC">
                 <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,1.8vw,26px);line-height:1.1">{{ g.label }}</span>
-                <a href="{{ g.href }}" target="_blank" rel="noopener" style="pointer-events:{{ g.pe }};margin-top:8px;display:inline-flex;align-items:center;min-height:32px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8">Consultar disponibilidad →</a>
+                <a href="{{ g.href }}" onClick="{{ g.stop }}" target="_blank" rel="noopener" style="pointer-events:{{ g.pe }};margin-top:8px;display:inline-flex;align-items:center;min-height:32px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8">Consultar disponibilidad →</a>
               </figcaption>
             </figure>
           </sc-for>
@@ -235,27 +236,27 @@ summary::-webkit-details-marker{display:none}
     </section>
 
     <!-- NOVIOS -->
-    <section id="novios" aria-labelledby="t-novios" style="position:relative;background:#0E0E0D;color:#F5F2EC;padding:clamp(88px,11vw,160px) clamp(22px,5vw,64px)">
+    <section id="novios" aria-labelledby="t-novios" style="position:relative;background:#111111;color:#F5F2EC;padding:clamp(88px,11vw,160px) clamp(22px,5vw,64px)">
       <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(48px,7vw,120px);align-items:center">
         <div data-reveal="" style="position:relative;padding:14px">
           <div style="position:absolute;inset:0;border:1px solid rgba(201,174,126,.45);pointer-events:none"></div>
           <div style="position:relative;aspect-ratio:4/5;overflow:hidden">
-            <image-slot id="novios-principal" src="./img/novios-principal.webp" style="object-position:50% 40%" shape="rect" placeholder="EL NOVIO · retrato con traje o smoking, luz cálida, momento previo a la ceremonia"></image-slot>
+            <img src="./img/novio-traje-azul.webp" alt="Novio con traje azul, moño y boutonnière" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%">
           </div>
         </div>
         <div data-reveal="">
           <p style="font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:#C9AE7E;display:flex;align-items:center;gap:14px"><span style="width:32px;height:1px;background:#C9AE7E"></span>Casamientos</p>
           <h2 id="t-novios" style="margin-top:22px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(50px,7vw,104px);line-height:.92;letter-spacing:-.02em">El traje <em style="color:#E6D6B8">del novio</em></h2>
-          <p style="margin-top:26px;max-width:460px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(22px,2vw,28px);line-height:1.35;color:#DCD5C9">Porque en tu casamiento todos los detalles importan.</p>
+          <p style="margin-top:26px;max-width:460px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(22px,2vw,28px);line-height:1.35;color:#E6D6B8">Porque en tu casamiento todos los detalles importan.</p>
           <ol style="list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));column-gap:36px">
-            <li style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(245,242,236,.14);font-size:15px"><span style="font-family:'Cormorant Garamond',serif;font-style:italic;color:#C9AE7E;font-size:17px">i.</span>Asesoramiento</li>
-            <li style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(245,242,236,.14);font-size:15px"><span style="font-family:'Cormorant Garamond',serif;font-style:italic;color:#C9AE7E;font-size:17px">ii.</span>Elección del estilo</li>
-            <li style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(245,242,236,.14);font-size:15px"><span style="font-family:'Cormorant Garamond',serif;font-style:italic;color:#C9AE7E;font-size:17px">iii.</span>Talle</li>
-            <li style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(245,242,236,.14);font-size:15px"><span style="font-family:'Cormorant Garamond',serif;font-style:italic;color:#C9AE7E;font-size:17px">iv.</span>Combinación</li>
-            <li style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(245,242,236,.14);font-size:15px"><span style="font-family:'Cormorant Garamond',serif;font-style:italic;color:#C9AE7E;font-size:17px">v.</span>Accesorios</li>
-            <li style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(245,242,236,.14);font-size:15px"><span style="font-family:'Cormorant Garamond',serif;font-style:italic;color:#C9AE7E;font-size:17px">vi.</span>Coordinación con padrinos</li>
+            <li style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(245,242,236,.14);font-size:15px"><span style="flex:none;min-width:30px;font-family:'Cormorant Garamond',serif;font-weight:600;color:#C9AE7E;font-size:19px;letter-spacing:.04em">I.</span>Asesoramiento</li>
+            <li style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(245,242,236,.14);font-size:15px"><span style="flex:none;min-width:30px;font-family:'Cormorant Garamond',serif;font-weight:600;color:#C9AE7E;font-size:19px;letter-spacing:.04em">II.</span>Elección del estilo</li>
+            <li style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(245,242,236,.14);font-size:15px"><span style="flex:none;min-width:30px;font-family:'Cormorant Garamond',serif;font-weight:600;color:#C9AE7E;font-size:19px;letter-spacing:.04em">III.</span>Talle</li>
+            <li style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(245,242,236,.14);font-size:15px"><span style="flex:none;min-width:30px;font-family:'Cormorant Garamond',serif;font-weight:600;color:#C9AE7E;font-size:19px;letter-spacing:.04em">IV.</span>Combinación</li>
+            <li style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(245,242,236,.14);font-size:15px"><span style="flex:none;min-width:30px;font-family:'Cormorant Garamond',serif;font-weight:600;color:#C9AE7E;font-size:19px;letter-spacing:.04em">V.</span>Accesorios</li>
+            <li style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(245,242,236,.14);font-size:15px"><span style="flex:none;min-width:30px;font-family:'Cormorant Garamond',serif;font-weight:600;color:#C9AE7E;font-size:19px;letter-spacing:.04em">VI.</span>Coordinación con padrinos</li>
           </ol>
-          <a href="{{ wa.novio }}" target="_blank" rel="noopener" style="margin-top:44px;display:inline-flex;align-items:center;justify-content:center;min-height:58px;padding:0 34px;background:#F5F2EC;color:#111111;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .3s" style-hover="background:#E3D6BF;color:#111111">Quiero consultar por mi traje</a>
+          <a href="{{ wa.novio }}" target="_blank" rel="noopener" style="margin-top:44px;display:inline-flex;align-items:center;justify-content:center;min-height:58px;padding:0 34px;background:#F5F2EC;color:#111111;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .3s" style-hover="background:#E6D6B8;color:#111111">Quiero consultar por mi traje</a>
         </div>
       </div>
     </section>
@@ -263,17 +264,17 @@ summary::-webkit-details-marker{display:none}
     <!-- PADRINOS -->
     <section id="padrinos" aria-labelledby="t-padrinos" style="padding:clamp(80px,10vw,140px) clamp(16px,4vw,48px)">
       <div style="max-width:1400px;margin:0 auto">
-        <div data-reveal="" style="position:relative;aspect-ratio:{{ padAspect }};overflow:hidden;background:#D9D0C1">
-          <image-slot id="padrinos-grupo" src="./img/padrinos-grupo.webp" style="object-position:50% 35%" shape="rect" placeholder="NOVIO + PADRINOS · grupo con trajes coordinados, plano horizontal"></image-slot>
+        <div data-reveal="" style="position:relative;aspect-ratio:{{ padAspect }};overflow:hidden;background:#DDD4C5">
+          <img src="./img/padrinos-grupo.webp" alt="Padrinos preparándose, ajustando camisas y corbatas" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%">
         </div>
         <div data-reveal="" style="margin-top:clamp(36px,5vw,64px);padding:0 6px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(24px,5vw,80px);align-items:end">
           <div>
-            <p style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#80683F">Padrinos y acompañantes</p>
+            <p style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#765E36">Padrinos y acompañantes</p>
             <h2 id="t-padrinos" style="margin-top:16px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(42px,6vw,84px);line-height:.98;letter-spacing:-.015em">El equipo <em>también se viste.</em></h2>
           </div>
           <div>
             <p style="max-width:480px;font-size:17px;line-height:1.65;color:#4A4642;text-wrap:pretty">Te ayudamos a coordinar los looks de padrinos y acompañantes para que todo el grupo se vea en armonía con el novio.</p>
-            <a href="{{ wa.padrinos }}" target="_blank" rel="noopener" style="margin-top:28px;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;background:#111111;color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .3s" style-hover="background:#2E2C2A;color:#F5F2EC">Consultar por trajes para padrinos</a>
+            <a href="{{ wa.padrinos }}" target="_blank" rel="noopener" style="margin-top:28px;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;background:#111111;color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .3s" style-hover="background:#1A1918;color:#F5F2EC">Consultar por trajes para padrinos</a>
           </div>
         </div>
       </div>
@@ -284,18 +285,18 @@ summary::-webkit-details-marker{display:none}
       <h2 id="t-grad" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Alquiler de trajes para graduaciones, fiestas de 15 y eventos en Rosario</h2>
       <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(8px,1vw,14px)">
         <article data-reveal="" style="background:#1A1918;color:#F5F2EC;display:flex;flex-direction:column">
-          <div style="position:relative;aspect-ratio:4/3;overflow:hidden"><image-slot id="grad-principal" src="./img/graduacion-4x3.webp" shape="rect" placeholder="GRADUACIÓN · egresado con traje"></image-slot></div>
+          <div style="position:relative;aspect-ratio:4/3;overflow:hidden"><img src="./img/graduacion-4x3.webp" alt="Egresado con traje negro en el salón de fiesta" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 18%"></div>
           <div style="padding:clamp(24px,3vw,44px);display:flex;flex-direction:column;gap:14px;flex:1">
             <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(34px,3.4vw,48px);line-height:1">Graduaciones</h3>
-            <p style="font-size:16px;line-height:1.6;color:#E6E0D6;max-width:420px">Un look especial para celebrar un logro importante.</p>
+            <p style="font-size:16px;line-height:1.6;color:#F5F2EC;max-width:420px">Un look especial para celebrar un logro importante.</p>
             <a href="{{ wa.graduacion }}" target="_blank" rel="noopener" style="margin-top:auto;padding-top:12px;display:inline-flex;align-items:center;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8" style-hover="color:#F5F2EC">Consultar por graduación →</a>
           </div>
         </article>
         <article data-reveal="" style="background:#1A1918;color:#F5F2EC;display:flex;flex-direction:column">
-          <div style="position:relative;aspect-ratio:4/3;overflow:hidden"><image-slot id="eventos-principal" src="https://images.unsplash.com/photo-1609500898894-01f1dc7ce527?w=1400&q=70&auto=format&fit=crop" credit="Photo by Charbel Aoun on Unsplash" credit-href="https://unsplash.com/@charbelaounlb" shape="rect" placeholder="EVENTOS Y FIESTAS · smoking, fiesta de noche"></image-slot></div>
+          <div style="position:relative;aspect-ratio:4/3;overflow:hidden"><img src="https://images.unsplash.com/photo-1609500898894-01f1dc7ce527?w=1400&q=70&auto=format&fit=crop" alt="Invitado con smoking verde y moño en una fiesta de noche" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 25%"></div>
           <div style="padding:clamp(24px,3vw,44px);display:flex;flex-direction:column;gap:14px;flex:1">
             <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(34px,3.4vw,48px);line-height:1">Eventos y fiestas</h3>
-            <p style="font-size:16px;line-height:1.6;color:#E6E0D6;max-width:420px">Trajes, smokings y looks de etiqueta para fiestas de 15, recepciones y ocasiones especiales. También para papás y hermanos de la quinceañera.</p>
+            <p style="font-size:16px;line-height:1.6;color:#F5F2EC;max-width:420px">Trajes, smokings y looks de etiqueta para fiestas de 15, recepciones y ocasiones especiales. También para papás y hermanos de la quinceañera.</p>
             <a href="{{ wa.evento }}" target="_blank" rel="noopener" style="margin-top:auto;padding-top:12px;display:inline-flex;align-items:center;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8" style-hover="color:#F5F2EC">Consultar por un evento →</a>
           </div>
         </article>
@@ -303,17 +304,24 @@ summary::-webkit-details-marker{display:none}
     </section>
 
     <!-- NIÑOS -->
-    <section id="ninos" aria-labelledby="t-ninos" style="background:#E6DDCD;padding:clamp(80px,10vw,140px) clamp(22px,5vw,64px)">
+    <section id="ninos" aria-labelledby="t-ninos" style="background:#ECE6DB;padding:clamp(80px,10vw,140px) clamp(22px,5vw,64px)">
       <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(40px,7vw,110px);align-items:center">
         <div data-reveal="" style="order:2">
-          <p style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#6E5835">Baroncito</p>
+          <p style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#765E36">Baroncito</p>
           <h2 id="t-ninos" style="margin-top:16px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(40px,5.2vw,72px);line-height:1;letter-spacing:-.015em;text-wrap:balance">Los más chicos también tienen <em>su gran momento.</em></h2>
           <p style="margin-top:22px;max-width:460px;font-size:17px;line-height:1.65;color:#4A4642">Opciones elegantes para acompañar bodas, fiestas, ceremonias y eventos especiales.</p>
-          <a href="{{ wa.ninos }}" target="_blank" rel="noopener" style="margin-top:32px;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;background:#111111;color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .3s" style-hover="background:#2E2C2A;color:#F5F2EC">Consultar trajes infantiles</a>
+          <a href="{{ wa.ninos }}" target="_blank" rel="noopener" style="margin-top:32px;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;background:#111111;color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .3s" style-hover="background:#1A1918;color:#F5F2EC">Consultar trajes infantiles</a>
         </div>
-        <div data-reveal="" style="order:1;display:grid;grid-template-columns:1.25fr 1fr;gap:12px;align-items:end">
-          <div style="position:relative;aspect-ratio:3/4;overflow:hidden"><image-slot id="ninos-1" src="./img/nino-traje-azul.webp" shape="rect" placeholder="NIÑO con traje · vertical"></image-slot></div>
-          <div style="position:relative;aspect-ratio:3/4;overflow:hidden;margin-bottom:12%"><image-slot id="ninos-2" src="./img/pajes-casamiento.webp" shape="rect" placeholder="PAJES · niños con smoking en casamiento"></image-slot></div>
+        <div data-reveal="" style="order:1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(12px,1.6vw,20px);align-items:start">
+          <figure style="margin:0;position:relative">
+            <div aria-hidden="true" style="position:absolute;inset:clamp(-12px,-1vw,-8px) auto auto clamp(-12px,-1vw,-8px);width:100%;height:100%;border:1px solid #C9AE7E;pointer-events:none"></div>
+            <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#DDD4C5"><img src="./img/nino-traje-azul.webp" alt="Niño con traje azul y moño, listo para la ceremonia" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 18%"></div>
+          </figure>
+          <figure style="margin:clamp(48px,9vw,120px) 0 0;display:flex;flex-direction:column;gap:14px">
+            <div style="position:relative;aspect-ratio:3/4;overflow:hidden;background:#DDD4C5"><img src="./img/pajes-casamiento.webp" alt="Pajes con smoking entrando en un casamiento" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;object-position:45% 62%"></div>
+            <figcaption style="font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#765E36">Pajes de casamiento</figcaption>
+          </figure>
+        </div>
         </div>
       </div>
     </section>
@@ -322,15 +330,15 @@ summary::-webkit-details-marker{display:none}
     <section id="como-funciona" aria-labelledby="t-como" style="padding:clamp(80px,10vw,140px) clamp(22px,5vw,64px)">
       <div style="max-width:1320px;margin:0 auto">
         <div data-reveal="" style="text-align:center">
-          <p style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#80683F">Cómo funciona</p>
+          <p style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#765E36">Cómo funciona</p>
           <h2 id="t-como" style="margin-top:16px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(42px,6vw,84px);line-height:.98;letter-spacing:-.015em">¿Cómo es <em>el alquiler?</em></h2>
         </div>
         <ol data-reveal="" style="position:relative;list-style:none;margin:clamp(48px,6vw,88px) 0 0;padding:0;display:grid;grid-template-columns:{{ steps.cols }};gap:{{ steps.gap }}">
-          <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><li aria-hidden="true" style="position:absolute;background:#CDBFA6;left:28px;top:28px;bottom:40px;width:1px"></li></sc-if>
-          <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}"><li aria-hidden="true" style="position:absolute;background:#CDBFA6;top:28px;left:10%;right:10%;height:1px"></li></sc-if>
+          <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><li aria-hidden="true" style="position:absolute;background:#DDD4C5;left:28px;top:28px;bottom:40px;width:1px"></li></sc-if>
+          <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}"><li aria-hidden="true" style="position:absolute;background:#DDD4C5;top:28px;left:10%;right:10%;height:1px"></li></sc-if>
           <sc-for list="{{ stepList }}" as="s" hint-placeholder-count="5">
             <li style="position:relative;display:flex;flex-direction:{{ steps.dir }};align-items:{{ steps.align }};text-align:{{ steps.text }};gap:{{ steps.innerGap }}">
-              <span style="flex:none;width:56px;height:56px;border-radius:50%;border:1px solid #A88B5C;background:#F5F2EC;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:#6E5835">{{ s.n }}</span>
+              <span style="flex:none;width:56px;height:56px;border-radius:50%;border:1px solid #765E36;background:#F5F2EC;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:#765E36">{{ s.n }}</span>
               <div style="padding-top:{{ steps.textPad }}">
                 <h3 style="font-size:13px;font-weight:600;letter-spacing:.24em;text-transform:uppercase">{{ s.t }}</h3>
                 <p style="margin-top:10px;font-size:16px;line-height:1.55;color:#4A4642;max-width:240px;text-wrap:pretty">{{ s.d }}</p>
@@ -343,11 +351,11 @@ summary::-webkit-details-marker{display:none}
 
     <!-- ASESORAMIENTO -->
     <section aria-labelledby="t-ases" style="background:#111111;color:#F5F2EC;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr))">
-      <div style="position:relative;min-height:clamp(420px,56vw,820px)"><image-slot id="asesoramiento-prueba" src="./img/asesoramiento-prueba.webp" style="object-position:40% 40%" shape="rect" placeholder="PRUEBA DE TRAJE · manos ajustando saco, cinta métrica, espejo del local"></image-slot></div>
+      <div style="position:relative;min-height:clamp(420px,56vw,820px)"><img src="./img/asesoramiento-prueba.webp" alt="Ajuste de corbata durante la prueba del traje" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:40% 40%"></div>
       <div data-reveal="" style="padding:clamp(64px,8vw,120px) clamp(22px,6vw,96px);display:flex;flex-direction:column;justify-content:center">
         <p style="font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:#C9AE7E">Asesoramiento</p>
         <h2 id="t-ases" style="margin-top:18px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(40px,4.8vw,70px);line-height:1;letter-spacing:-.015em;text-wrap:balance">No se trata solo de <em style="color:#E6D6B8">alquilar un traje.</em></h2>
-        <p style="margin-top:24px;max-width:480px;font-size:17px;line-height:1.65;color:#DCD5C9;text-wrap:pretty">Se trata de encontrar el traje adecuado para vos, para tu evento y para ese momento.</p>
+        <p style="margin-top:24px;max-width:480px;font-size:17px;line-height:1.65;color:#F5F2EC;text-wrap:pretty">Se trata de encontrar el traje adecuado para vos, para tu evento y para ese momento.</p>
         <ul style="list-style:none;margin:36px 0 0;padding:0;max-width:480px">
           <li style="display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-top:1px solid rgba(245,242,236,.14);font-size:15px">Elección del estilo<span style="color:#C9AE7E">✓</span></li>
           <li style="display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-top:1px solid rgba(245,242,236,.14);font-size:15px">Talle adecuado<span style="color:#C9AE7E">✓</span></li>
@@ -364,109 +372,108 @@ summary::-webkit-details-marker{display:none}
       <div style="max-width:1320px;margin:0 auto">
         <div data-reveal="" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px">
           <div>
-            <p style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#80683F">Reseñas de Google</p>
+            <p style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#765E36">Reseñas de Google</p>
             <h2 id="t-test" style="margin-top:16px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(40px,5.4vw,76px);line-height:1;letter-spacing:-.015em;text-wrap:balance">Ellos ya vivieron <em>la experiencia.</em></h2>
           </div>
-          <div style="display:flex;flex-direction:column;align-items:flex-start;gap:8px"><p style="display:flex;align-items:baseline;gap:12px"><span style="font-family:'Cormorant Garamond',serif;font-size:44px;line-height:1">4,3</span><span style="color:#A88B5C;letter-spacing:.2em;font-size:14px">★★★★★</span><span style="font-size:13px;color:#5A5550">38 opiniones en Google</span></p><a href="https://www.google.com/maps/place/BAR%C3%93N+%26+BARONCITO/@-32.9530253,-60.6422204,17z/data=!4m8!3m7!1s0x95b7ab1aa40375d3:0x63085915bd857600!8m2!3d-32.9530298!4d-60.6396455!9m1!1b1!16s%2Fg%2F1q629y5m0" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;border-bottom:1px solid #A88B5C">Ver todas en Google →</a></div>
+          <div style="display:flex;flex-direction:column;align-items:flex-start;gap:8px"><p style="display:flex;align-items:baseline;gap:12px"><span style="font-family:'Cormorant Garamond',serif;font-size:44px;line-height:1">4,3</span><span style="color:#765E36;letter-spacing:.2em;font-size:14px">★★★★★</span><span style="font-size:13px;color:#4A4642">38 opiniones en Google</span></p><a href="https://www.google.com/maps/place/BAR%C3%93N+%26+BARONCITO/@-32.9530253,-60.6422204,17z/data=!4m8!3m7!1s0x95b7ab1aa40375d3:0x63085915bd857600!8m2!3d-32.9530298!4d-60.6396455!9m1!1b1!16s%2Fg%2F1q629y5m0" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;border-bottom:1px solid #765E36">Ver todas en Google →</a></div>
         </div>
         <div style="margin-top:clamp(40px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(12px,1.4vw,20px)">
-          <figure data-reveal="" style="margin:0;padding:clamp(28px,3vw,40px);background:#FBF9F5;border:1px solid #E2DBCF;display:flex;flex-direction:column;gap:22px">
-            <span aria-label="5 de 5 estrellas" style="color:#A88B5C;letter-spacing:.3em;font-size:14px">★★★★★</span>
+          <figure data-reveal="" style="margin:0;padding:clamp(28px,3vw,40px);background:#FBF9F5;border:1px solid #DDD4C5;display:flex;flex-direction:column;gap:22px">
+            <span aria-label="5 de 5 estrellas" style="color:#765E36;letter-spacing:.3em;font-size:14px">★★★★★</span>
             <blockquote style="margin:0;font-family:'Cormorant Garamond',serif;font-size:23px;line-height:1.35;color:#111111;text-wrap:pretty">“Un asesoramiento excelente! Me atendieron de maravillas. Gracias Paulo por la dedicación.”</blockquote>
-            <figcaption style="margin-top:auto;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#111111">Marce Mesegue</span><span style="font-size:12px;color:#5A5550">Reseña de Google · Hace 2 meses</span></figcaption>
+            <figcaption style="margin-top:auto;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#111111">Marce Mesegue</span><span style="font-size:12px;color:#4A4642">Reseña de Google · Hace 2 meses</span></figcaption>
           </figure>
-          <figure data-reveal="" style="margin:0;padding:clamp(28px,3vw,40px);background:#FBF9F5;border:1px solid #E2DBCF;display:flex;flex-direction:column;gap:22px">
-            <span aria-label="5 de 5 estrellas" style="color:#A88B5C;letter-spacing:.3em;font-size:14px">★★★★★</span>
+          <figure data-reveal="" style="margin:0;padding:clamp(28px,3vw,40px);background:#FBF9F5;border:1px solid #DDD4C5;display:flex;flex-direction:column;gap:22px">
+            <span aria-label="5 de 5 estrellas" style="color:#765E36;letter-spacing:.3em;font-size:14px">★★★★★</span>
             <blockquote style="margin:0;font-family:'Cormorant Garamond',serif;font-size:23px;line-height:1.35;color:#111111;text-wrap:pretty">“Fui 15 días antes del evento que tenía y realmente me salvaron la vida. Muy práctica la atención y la calidad es excelente!”</blockquote>
-            <figcaption style="margin-top:auto;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#111111">Gabriel Schvindt</span><span style="font-size:12px;color:#5A5550">Reseña de Google · Hace 7 meses</span></figcaption>
+            <figcaption style="margin-top:auto;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#111111">Gabriel Schvindt</span><span style="font-size:12px;color:#4A4642">Reseña de Google · Hace 7 meses</span></figcaption>
           </figure>
-          <figure data-reveal="" style="margin:0;padding:clamp(28px,3vw,40px);background:#FBF9F5;border:1px solid #E2DBCF;display:flex;flex-direction:column;gap:22px">
-            <span aria-label="5 de 5 estrellas" style="color:#A88B5C;letter-spacing:.3em;font-size:14px">★★★★★</span>
+          <figure data-reveal="" style="margin:0;padding:clamp(28px,3vw,40px);background:#FBF9F5;border:1px solid #DDD4C5;display:flex;flex-direction:column;gap:22px">
+            <span aria-label="5 de 5 estrellas" style="color:#765E36;letter-spacing:.3em;font-size:14px">★★★★★</span>
             <blockquote style="margin:0;font-family:'Cormorant Garamond',serif;font-size:23px;line-height:1.35;color:#111111;text-wrap:pretty">“Desde que entrás la atención es perfecta, una variedad única en la ciudad, lo que pedís lo tienen, el personal 10 puntos, volvería siempre.”</blockquote>
-            <figcaption style="margin-top:auto;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#111111">Samuel Alia</span><span style="font-size:12px;color:#5A5550">Reseña de Google · Hace 5 meses</span></figcaption>
+            <figcaption style="margin-top:auto;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#111111">Samuel Alia</span><span style="font-size:12px;color:#4A4642">Reseña de Google · Hace 5 meses</span></figcaption>
           </figure>
-          <figure data-reveal="" style="margin:0;padding:clamp(28px,3vw,40px);background:#FBF9F5;border:1px solid #E2DBCF;display:flex;flex-direction:column;gap:22px">
-            <span aria-label="5 de 5 estrellas" style="color:#A88B5C;letter-spacing:.3em;font-size:14px">★★★★★</span>
+          <figure data-reveal="" style="margin:0;padding:clamp(28px,3vw,40px);background:#FBF9F5;border:1px solid #DDD4C5;display:flex;flex-direction:column;gap:22px">
+            <span aria-label="5 de 5 estrellas" style="color:#765E36;letter-spacing:.3em;font-size:14px">★★★★★</span>
             <blockquote style="margin:0;font-family:'Cormorant Garamond',serif;font-size:23px;line-height:1.35;color:#111111;text-wrap:pretty">“Excelente atención y predisposición por parte de Paulo y todo el personal. Alquilé un traje y quedó impecable!”</blockquote>
-            <figcaption style="margin-top:auto;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#111111">Nicolás Natale</span><span style="font-size:12px;color:#5A5550">Reseña de Google · Hace 7 meses</span></figcaption>
+            <figcaption style="margin-top:auto;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#111111">Nicolás Natale</span><span style="font-size:12px;color:#4A4642">Reseña de Google · Hace 7 meses</span></figcaption>
           </figure>
         </div>
       </div>
     </section>
 
     <!-- PREGUNTAS FRECUENTES -->
-    <section id="preguntas" aria-labelledby="t-faq" style="padding:clamp(80px,10vw,140px) clamp(22px,5vw,64px);border-top:1px solid #E2DBCF">
-      <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(36px,6vw,96px);align-items:start">
-        <div data-reveal="">
-          <p style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#80683F">Preguntas frecuentes</p>
-          <h2 id="t-faq" style="margin-top:16px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(42px,5vw,72px);line-height:.98;letter-spacing:-.015em;text-wrap:balance">Lo que más <em>nos consultan</em></h2>
+    <section id="preguntas" aria-labelledby="t-faq" style="padding:clamp(80px,10vw,140px) clamp(22px,5vw,64px);background:#F5F2EC;border-top:1px solid #DDD4C5">
+      <div style="max-width:860px;margin:0 auto">
+        <div data-reveal="" style="text-align:center">
+          <p style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#765E36">Preguntas frecuentes</p>
+          <h2 id="t-faq" style="margin-top:16px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(42px,6vw,84px);line-height:.98;letter-spacing:-.015em;text-wrap:balance">Lo que más<br><em>nos consultan</em></h2>
         </div>
-        <div data-reveal="" style="border-top:1px solid #D9CFBF">
-          <details open="" style="border-bottom:1px solid #D9CFBF">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:clamp(20px,2.4vw,28px) 0;font-family:'Cormorant Garamond',serif;font-size:clamp(23px,2.2vw,30px);line-height:1.15;color:#111111">¿Con cuánta anticipación conviene consultar?<span aria-hidden="true" style="flex:none;font-family:'Manrope',sans-serif;font-size:22px;font-weight:400;color:#80683F">+</span></summary>
-            <p style="padding:0 0 clamp(22px,2.4vw,30px);max-width:620px;font-size:17px;line-height:1.65;color:#3A3733;text-wrap:pretty">Cuanto antes, mejor: así tenés más opciones de modelos y talles, sobre todo en temporada de casamientos, egresados y fiestas de 15. Si tu evento está cerca, escribinos igual y vemos la disponibilidad.</p>
+        <div data-reveal="" style="margin-top:clamp(40px,5vw,64px);display:flex;flex-direction:column;gap:12px">
+          <details open="{{ true }}" style="background:#FBF9F5;border:1px solid #DDD4C5;transition:background .3s ease,border-color .3s ease" style-hover="background:#FFFFFF;border-color:#C9AE7E">
+            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:clamp(18px,2vw,24px) clamp(20px,2.4vw,32px);font-family:'Manrope',sans-serif;font-size:clamp(16px,1.3vw,18px);font-weight:600;line-height:1.35;color:#111111">¿Con cuánta anticipación conviene consultar?<span aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:50%;border:1px solid #765E36;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:400;line-height:1;color:#765E36;transition:transform .3s ease">+</span></summary>
+            <p style="padding:0 clamp(20px,2.4vw,32px) clamp(20px,2.2vw,26px);max-width:680px;font-size:16px;line-height:1.7;color:#4A4642;text-wrap:pretty">Cuanto antes, mejor: así tenés más opciones de modelos y talles, sobre todo en temporada de casamientos, egresados y fiestas de 15. Si tu evento está cerca, escribinos igual y vemos la disponibilidad.</p>
           </details>
-          <details style="border-bottom:1px solid #D9CFBF">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:clamp(20px,2.4vw,28px) 0;font-family:'Cormorant Garamond',serif;font-size:clamp(23px,2.2vw,30px);line-height:1.15;color:#111111">¿Tengo que ir al local a probarme el traje?<span aria-hidden="true" style="flex:none;font-family:'Manrope',sans-serif;font-size:22px;font-weight:400;color:#80683F">+</span></summary>
-            <p style="padding:0 0 clamp(22px,2.4vw,30px);max-width:620px;font-size:17px;line-height:1.65;color:#3A3733;text-wrap:pretty">Sí. En Sarmiento 1311 probamos talles y combinaciones para que el traje te quede bien el día del evento. El asesoramiento es sin cargo.</p>
+          <details style="background:#FBF9F5;border:1px solid #DDD4C5;transition:background .3s ease,border-color .3s ease" style-hover="background:#FFFFFF;border-color:#C9AE7E">
+            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:clamp(18px,2vw,24px) clamp(20px,2.4vw,32px);font-family:'Manrope',sans-serif;font-size:clamp(16px,1.3vw,18px);font-weight:600;line-height:1.35;color:#111111">¿Tengo que ir al local a probarme el traje?<span aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:50%;border:1px solid #765E36;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:400;line-height:1;color:#765E36;transition:transform .3s ease">+</span></summary>
+            <p style="padding:0 clamp(20px,2.4vw,32px) clamp(20px,2.2vw,26px);max-width:680px;font-size:16px;line-height:1.7;color:#4A4642;text-wrap:pretty">Sí. En Sarmiento 1311 probamos talles y combinaciones para que el traje te quede bien el día del evento. El asesoramiento es sin cargo.</p>
           </details>
-          <details style="border-bottom:1px solid #D9CFBF">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:clamp(20px,2.4vw,28px) 0;font-family:'Cormorant Garamond',serif;font-size:clamp(23px,2.2vw,30px);line-height:1.15;color:#111111">¿Cómo se reserva el traje?<span aria-hidden="true" style="flex:none;font-family:'Manrope',sans-serif;font-size:22px;font-weight:400;color:#80683F">+</span></summary>
-            <p style="padding:0 0 clamp(22px,2.4vw,30px);max-width:620px;font-size:17px;line-height:1.65;color:#3A3733;text-wrap:pretty">Una vez elegido el conjunto, con una seña congelás el precio y lo dejamos listo para la fecha de tu evento.</p>
+          <details style="background:#FBF9F5;border:1px solid #DDD4C5;transition:background .3s ease,border-color .3s ease" style-hover="background:#FFFFFF;border-color:#C9AE7E">
+            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:clamp(18px,2vw,24px) clamp(20px,2.4vw,32px);font-family:'Manrope',sans-serif;font-size:clamp(16px,1.3vw,18px);font-weight:600;line-height:1.35;color:#111111">¿Cómo se reserva el traje?<span aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:50%;border:1px solid #765E36;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:400;line-height:1;color:#765E36;transition:transform .3s ease">+</span></summary>
+            <p style="padding:0 clamp(20px,2.4vw,32px) clamp(20px,2.2vw,26px);max-width:680px;font-size:16px;line-height:1.7;color:#4A4642;text-wrap:pretty">Una vez elegido el conjunto, con una seña congelás el precio y lo dejamos listo para la fecha de tu evento.</p>
           </details>
-          <details style="border-bottom:1px solid #D9CFBF">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:clamp(20px,2.4vw,28px) 0;font-family:'Cormorant Garamond',serif;font-size:clamp(23px,2.2vw,30px);line-height:1.15;color:#111111">¿Pueden coordinar los trajes del novio y los padrinos?<span aria-hidden="true" style="flex:none;font-family:'Manrope',sans-serif;font-size:22px;font-weight:400;color:#80683F">+</span></summary>
-            <p style="padding:0 0 clamp(22px,2.4vw,30px);max-width:620px;font-size:17px;line-height:1.65;color:#3A3733;text-wrap:pretty">Sí. Te ayudamos a coordinar los looks de padrinos y acompañantes para que todo el grupo se vea en armonía con el novio.</p>
+          <details style="background:#FBF9F5;border:1px solid #DDD4C5;transition:background .3s ease,border-color .3s ease" style-hover="background:#FFFFFF;border-color:#C9AE7E">
+            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:clamp(18px,2vw,24px) clamp(20px,2.4vw,32px);font-family:'Manrope',sans-serif;font-size:clamp(16px,1.3vw,18px);font-weight:600;line-height:1.35;color:#111111">¿Pueden coordinar los trajes del novio y los padrinos?<span aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:50%;border:1px solid #765E36;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:400;line-height:1;color:#765E36;transition:transform .3s ease">+</span></summary>
+            <p style="padding:0 clamp(20px,2.4vw,32px) clamp(20px,2.2vw,26px);max-width:680px;font-size:16px;line-height:1.7;color:#4A4642;text-wrap:pretty">Sí. Te ayudamos a coordinar los looks de padrinos y acompañantes para que todo el grupo se vea en armonía con el novio.</p>
           </details>
-          <details style="border-bottom:1px solid #D9CFBF">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:clamp(20px,2.4vw,28px) 0;font-family:'Cormorant Garamond',serif;font-size:clamp(23px,2.2vw,30px);line-height:1.15;color:#111111">¿Tienen trajes para niños y adolescentes?<span aria-hidden="true" style="flex:none;font-family:'Manrope',sans-serif;font-size:22px;font-weight:400;color:#80683F">+</span></summary>
-            <p style="padding:0 0 clamp(22px,2.4vw,30px);max-width:620px;font-size:17px;line-height:1.65;color:#3A3733;text-wrap:pretty">Sí. Tenemos trajes para adultos, adolescentes y niños, incluidos trajes para pajes de casamiento.</p>
+          <details style="background:#FBF9F5;border:1px solid #DDD4C5;transition:background .3s ease,border-color .3s ease" style-hover="background:#FFFFFF;border-color:#C9AE7E">
+            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:clamp(18px,2vw,24px) clamp(20px,2.4vw,32px);font-family:'Manrope',sans-serif;font-size:clamp(16px,1.3vw,18px);font-weight:600;line-height:1.35;color:#111111">¿Tienen trajes para niños y adolescentes?<span aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:50%;border:1px solid #765E36;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:400;line-height:1;color:#765E36;transition:transform .3s ease">+</span></summary>
+            <p style="padding:0 clamp(20px,2.4vw,32px) clamp(20px,2.2vw,26px);max-width:680px;font-size:16px;line-height:1.7;color:#4A4642;text-wrap:pretty">Sí. Tenemos trajes para adultos, adolescentes y niños, incluidos trajes para pajes de casamiento.</p>
           </details>
-          <details style="border-bottom:1px solid #D9CFBF">
-            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:clamp(20px,2.4vw,28px) 0;font-family:'Cormorant Garamond',serif;font-size:clamp(23px,2.2vw,30px);line-height:1.15;color:#111111">¿Qué días y horarios atienden?<span aria-hidden="true" style="flex:none;font-family:'Manrope',sans-serif;font-size:22px;font-weight:400;color:#80683F">+</span></summary>
-            <p style="padding:0 0 clamp(22px,2.4vw,30px);max-width:620px;font-size:17px;line-height:1.65;color:#3A3733;text-wrap:pretty">De lunes a viernes de 9:30 a 19:00 y los sábados de 10:00 a 12:30, en Sarmiento 1311, Rosario.</p>
+          <details style="background:#FBF9F5;border:1px solid #DDD4C5;transition:background .3s ease,border-color .3s ease" style-hover="background:#FFFFFF;border-color:#C9AE7E">
+            <summary style="list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:clamp(18px,2vw,24px) clamp(20px,2.4vw,32px);font-family:'Manrope',sans-serif;font-size:clamp(16px,1.3vw,18px);font-weight:600;line-height:1.35;color:#111111">¿Qué días y horarios atienden?<span aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:50%;border:1px solid #765E36;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:400;line-height:1;color:#765E36;transition:transform .3s ease">+</span></summary>
+            <p style="padding:0 clamp(20px,2.4vw,32px) clamp(20px,2.2vw,26px);max-width:680px;font-size:16px;line-height:1.7;color:#4A4642;text-wrap:pretty">De lunes a viernes de 9:30 a 19:00 y los sábados de 10:00 a 12:30, en Sarmiento 1311, Rosario.</p>
           </details>
         </div>
       </div>
     </section>
 
     <!-- UBICACIÓN -->
-    <section id="contacto" aria-labelledby="t-ubic" style="background:#ECE6DB;display:grid;grid-template-columns:{{ ubic.cols }};align-items:center">
+    <section id="contacto" aria-labelledby="t-ubic" style="background:#111111;color:#F5F2EC;display:grid;grid-template-columns:{{ ubic.cols }};align-items:stretch">
       <div data-reveal="" style="padding:{{ ubic.pad }};display:flex;flex-direction:column;justify-content:center">
-        <p style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#80683F">El local</p>
-        <h2 id="t-ubic" style="margin-top:16px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(42px,5.6vw,80px);line-height:.98;letter-spacing:-.015em">Vení a <em>conocernos.</em></h2>
-        <div style="margin-top:32px;max-width:420px">
-          <p style="font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#5A5550">Dirección</p>
-          <address style="margin-top:10px;font-style:normal;font-family:'Manrope',sans-serif;font-size:clamp(20px,1.8vw,24px);font-weight:500;line-height:1.35;color:#111111">Sarmiento 1311<br><span style="font-size:17px;font-weight:400;color:#4A4642">Rosario, Santa Fe</span></address>
+        <p style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#C9AE7E">El local</p>
+        <h2 id="t-ubic" style="margin-top:20px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(44px,5.4vw,80px);line-height:1;letter-spacing:-.015em;text-wrap:balance">Vení a <em style="color:#E6D6B8">conocernos.</em></h2>
+        <p style="margin-top:22px;max-width:480px;font-size:17px;line-height:1.6;color:#F5F2EC;text-wrap:pretty">Contanos qué evento tenés y te ayudamos a encontrar el look adecuado. Te esperamos en el local.</p>
+        <div style="margin-top:36px;padding-top:28px;border-top:1px solid rgba(245,242,236,.14);max-width:440px">
+          <p style="font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#C9AE7E">Dirección</p>
+          <address style="margin-top:12px;font-style:normal;font-family:'Manrope',sans-serif;font-size:clamp(20px,1.8vw,24px);font-weight:500;line-height:1.35;color:#F5F2EC">Sarmiento 1311<br><span style="font-size:16px;font-weight:400;color:#F5F2EC">Rosario, Santa Fe</span></address>
         </div>
-        <div style="margin-top:24px;padding-top:24px;border-top:1px solid #D2C8B7;max-width:420px">
-          <p style="font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#5A5550">Horarios de atención</p>
-          <div style="margin-top:12px;display:grid;grid-template-columns:auto 1fr;column-gap:28px;row-gap:6px;font-size:16px;line-height:1.5"><span>Lunes a viernes</span><span>9:30 – 19:00</span><span>Sábados</span><span>10:00 – 12:30</span><span style="color:#5A5550">Domingos</span><span style="color:#5A5550">Cerrado</span></div>
+        <div style="margin-top:28px;padding-top:28px;border-top:1px solid rgba(245,242,236,.14);max-width:440px">
+          <p style="font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#C9AE7E">Horarios</p>
+          <div style="margin-top:14px;display:grid;grid-template-columns:auto 1fr;column-gap:40px;row-gap:8px;font-size:16px;line-height:1.5"><span>Lunes a viernes</span><span>9:30 – 19:00</span><span>Sábados</span><span>10:00 – 12:30</span><span style="color:#8C857B">Domingos</span><span style="color:#8C857B">Cerrado</span></div>
         </div>
       </div>
-      <div style="padding:{{ ubic.mapPad }};display:flex;align-items:center">
-        <div style="position:relative;width:100%;height:clamp(380px,42vw,600px);border-radius:20px;overflow:hidden;background:#D9D0C1;box-shadow:0 30px 70px -30px rgba(17,17,17,.35), 0 2px 8px rgba(17,17,17,.06)">
-          <iframe title="Mapa: Barón &amp; Baroncito, Sarmiento 1311, Rosario" src="https://maps.google.com/maps?q=BAR%C3%93N%20%26%20BARONCITO%2C%20Sarmiento%201311%2C%20Rosario%2C%20Santa%20Fe&amp;t=m&amp;z=16&amp;hl=es&amp;output=embed" referrerpolicy="no-referrer-when-downgrade" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
-        </div>
+      <div style="position:relative;min-height:{{ ubic.mapH }};background:#1A1918">
+        <iframe title="Mapa: Barón &amp; Baroncito, Sarmiento 1311, Rosario" src="https://maps.google.com/maps?q=BAR%C3%93N%20%26%20BARONCITO%2C%20Sarmiento%201311%2C%20Rosario%2C%20Santa%20Fe&amp;t=m&amp;z=16&amp;hl=es&amp;output=embed" referrerpolicy="no-referrer-when-downgrade" allowfullscreen="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
       </div>
     </section>
 
     <!-- CTA FINAL -->
     <section aria-labelledby="t-final" style="position:relative;background:#111111;color:#F5F2EC;overflow:hidden;min-height:clamp(560px,80vh,860px);display:flex;align-items:center">
-      <div style="position:absolute;inset:0"><image-slot id="cta-final" src="./img/cta-final.webp" style="object-position:50% 45%" shape="rect" placeholder="FOTO FINAL · detalle elegante: solapa, moño, gemelos o caballero de espaldas"></image-slot></div>
+      <div style="position:absolute;inset:0"><img src="./img/cta-final.webp" alt="Caballero abrochándose el saco negro" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 45%"></div>
       <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,10,9,.8),rgba(10,10,9,.7) 50%,rgba(10,10,9,.92))"></div>
       <div data-reveal="" style="position:relative;width:100%;max-width:1000px;margin:0 auto;padding:clamp(80px,10vw,140px) clamp(22px,5vw,64px);text-align:center;pointer-events:none">
         <span style="display:block;width:9px;height:9px;margin:0 auto;border:1px solid #C9AE7E;transform:rotate(45deg)"></span>
         <h2 id="t-final" style="margin-top:32px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(46px,7.6vw,112px);line-height:.95;letter-spacing:-.02em;text-wrap:balance">Tu próximo evento <em style="color:#E6D6B8">merece un buen traje.</em></h2>
-        <p style="margin:28px auto 0;max-width:560px;font-size:clamp(15px,1.3vw,18px);line-height:1.6;color:#DCD5C9;text-wrap:pretty">Consultanos, contanos qué evento tenés y te ayudamos a encontrar el look adecuado.</p>
-        <button type="button" onClick="{{ togglePanel }}" style="pointer-events:auto;margin-top:44px;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:66px;padding:0 clamp(28px,4vw,52px);background:#F5F2EC;color:#111111;font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;transition:background .3s;border:0;font-family:'Manrope',sans-serif;cursor:pointer" style-hover="background:#E3D6BF;color:#111111"><span style="width:8px;height:8px;border-radius:50%;background:#25D366"></span>Consultar por WhatsApp</button>
+        <p style="margin:28px auto 0;max-width:560px;font-size:clamp(15px,1.3vw,18px);line-height:1.6;color:#F5F2EC;text-wrap:pretty">Consultanos, contanos qué evento tenés y te ayudamos a encontrar el look adecuado.</p>
+        <button type="button" onClick="{{ togglePanel }}" style="pointer-events:auto;margin-top:44px;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:66px;padding:0 clamp(28px,4vw,52px);background:#F5F2EC;color:#111111;font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;transition:background .3s;border:0;font-family:'Manrope',sans-serif;cursor:pointer" style-hover="background:#E6D6B8;color:#111111"><span style="width:8px;height:8px;border-radius:50%;background:#25D366"></span>Consultar por WhatsApp</button>
         <p style="margin-top:28px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#BFB7AA">Barón &amp; Baroncito · Sarmiento 1311 · Rosario</p>
       </div>
     </section>
   </main>
 
   <!-- FOOTER -->
-  <footer style="background:#0B0B0A;color:#BFB7AA;padding:clamp(56px,7vw,88px) clamp(22px,5vw,64px) {{ footPad }}">
+  <footer style="background:#111111;color:#BFB7AA;padding:clamp(56px,7vw,88px) clamp(22px,5vw,64px) {{ footPad }}">
     <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:40px">
       <div>
         <img src="./assets/logo-baron-baroncito-blanco.svg" alt="Barón &amp; Baroncito" width="1711" height="659" loading="lazy" style="display:block;height:72px;width:auto">
@@ -496,12 +503,27 @@ summary::-webkit-details-marker{display:none}
     </div>
   </footer>
 
+  <!-- LIGHTBOX GALERÍA -->
+  <sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-modal="true" aria-label="Foto ampliada: {{ lb.label }}" onClick="{{ lbClose }}" style="position:fixed;inset:0;z-index:90;background:rgba(10,10,9,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:64px 16px 28px;box-sizing:border-box;cursor:zoom-out">
+      <button onClick="{{ lbClose }}" aria-label="Cerrar" style="position:absolute;top:12px;right:12px;width:48px;height:48px;background:none;border:0;color:#F5F2EC;font-size:32px;line-height:1;cursor:pointer">×</button>
+      {{ lbImg }}
+      <div onClick="{{ lbStop }}" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 28px;color:#F5F2EC;cursor:default;text-align:center">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.1">{{ lb.label }}</span>
+        <a href="{{ lb.href }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8;border-bottom:1px solid #C9AE7E">Consultar disponibilidad →</a>
+      </div>
+      <button onClick="{{ lbPrev }}" aria-label="Foto anterior" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;background:rgba(245,242,236,.1);border:1px solid rgba(245,242,236,.45);color:#F5F2EC;font-size:22px;cursor:pointer">←</button>
+      <button onClick="{{ lbNext }}" aria-label="Foto siguiente" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;background:rgba(245,242,236,.1);border:1px solid rgba(245,242,236,.45);color:#F5F2EC;font-size:22px;cursor:pointer">→</button>
+      <p style="position:absolute;top:24px;left:20px;font-size:12px;letter-spacing:.2em;color:#C9AE7E">{{ lb.count }}</p>
+    </div>
+  </sc-if>
+
   <!-- WHATSAPP -->
   <sc-if value="{{ panelOpen }}" hint-placeholder-val="{{ false }}">
-    <div role="dialog" aria-label="Consulta rápida por WhatsApp" style="position:fixed;z-index:70;right:{{ panel.right }};left:{{ panel.left }};bottom:{{ panel.bottom }};width:{{ panel.width }};background:#F5F2EC;color:#111111;box-shadow:0 30px 80px -20px rgba(0,0,0,.45);border:1px solid #E2DBCF;padding:26px">
+    <div role="dialog" aria-label="Consulta rápida por WhatsApp" style="position:fixed;z-index:70;right:{{ panel.right }};left:{{ panel.left }};bottom:{{ panel.bottom }};width:{{ panel.width }};background:#F5F2EC;color:#111111;box-shadow:0 30px 80px -20px rgba(0,0,0,.45);border:1px solid #DDD4C5;padding:26px">
       <div style="display:flex;justify-content:space-between;align-items:start;gap:12px">
         <div>
-          <p style="font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:#80683F">Consulta rápida</p>
+          <p style="font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:#765E36">Consulta rápida</p>
           <p style="margin-top:8px;font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1.05">¿Para qué ocasión?</p>
         </div>
         <button onClick="{{ togglePanel }}" aria-label="Cerrar" style="width:44px;height:44px;margin:-10px -12px 0 0;background:none;border:0;font-size:24px;cursor:pointer;color:#111111">×</button>
@@ -511,10 +533,10 @@ summary::-webkit-details-marker{display:none}
           <button onClick="{{ t.onClick }}" aria-pressed="{{ t.active }}" style="min-height:46px;padding:0 10px;background:{{ t.bg }};color:{{ t.fg }};border:1px solid {{ t.line }};font-family:'Manrope',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .25s">{{ t.label }}</button>
         </sc-for>
       </div>
-      <label style="margin-top:18px;display:block;font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#5A5550">Fecha del evento
-        <input type="date" value="{{ date }}" onChange="{{ setDate }}" style="margin-top:8px;display:block;width:100%;height:48px;padding:0 14px;background:#FBF9F5;border:1px solid #D2C8B7;border-radius:0;font-family:'Manrope',sans-serif;font-size:15px;color:#111111">
+      <label style="margin-top:18px;display:block;font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#4A4642">Fecha del evento
+        <input type="date" value="{{ date }}" onChange="{{ setDate }}" style="margin-top:8px;display:block;width:100%;height:48px;padding:0 14px;background:#FBF9F5;border:1px solid #DDD4C5;border-radius:0;font-family:'Manrope',sans-serif;font-size:15px;color:#111111">
       </label>
-      <a href="{{ wa.current }}" target="_blank" rel="noopener" style="margin-top:18px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;background:#111111;color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase" style-hover="background:#2E2C2A;color:#F5F2EC"><span style="width:8px;height:8px;border-radius:50%;background:#25D366"></span>Enviar por WhatsApp</a>
+      <a href="{{ wa.current }}" target="_blank" rel="noopener" style="margin-top:18px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;background:#111111;color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase" style-hover="background:#1A1918;color:#F5F2EC"><span style="width:8px;height:8px;border-radius:50%;background:#25D366"></span>Enviar por WhatsApp</a>
     </div>
   </sc-if>
 
@@ -525,7 +547,7 @@ summary::-webkit-details-marker{display:none}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;whatsapp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+5493416054619&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacto&quot;},&quot;instagram&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://www.instagram.com/baronybaroncito/&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacto&quot;},&quot;facebook&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacto&quot;},&quot;headerTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;oscuro&quot;,&quot;marfil&quot;],&quot;default&quot;:&quot;oscuro&quot;,&quot;tsType&quot;:&quot;'oscuro'|'marfil'&quot;,&quot;section&quot;:&quot;Diseño&quot;},&quot;quickPanel&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Diseño&quot;}}">
 class Component extends DCLogic {
-  state = { scrolled: false, w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false, panel: false, topic: 'general', date: '', filter: 'todos', hov: -1 };
+  state = { scrolled: false, w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false, panel: false, topic: 'general', date: '', filter: 'todos', hov: -1, lb: -1 };
 
   componentDidMount() {
     this._s = () => { const s = window.scrollY > 40; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
@@ -533,9 +555,21 @@ class Component extends DCLogic {
     window.addEventListener('scroll', this._s, { passive: true });
     window.addEventListener('resize', this._r);
     this._s();
+    this._k = (e) => {
+      if (this.state.lb < 0) return;
+      if (e.key === 'Escape') this.setState({ lb: -1 });
+      else if (e.key === 'ArrowRight') this.lbStep(1);
+      else if (e.key === 'ArrowLeft') this.lbStep(-1);
+    };
+    window.addEventListener('keydown', this._k);
     setTimeout(() => this.setupReveal(), 60);
   }
+  lbStep(d) {
+    const n = this._galN || 1;
+    this.setState(s => ({ lb: ((s.lb + d) % n + n) % n }));
+  }
   componentWillUnmount() {
+    window.removeEventListener('keydown', this._k);
     window.removeEventListener('scroll', this._s);
     window.removeEventListener('resize', this._r);
     this._io && this._io.disconnect();
@@ -582,7 +616,7 @@ class Component extends DCLogic {
       height: scrolled ? (m ? '64px' : '76px') : (m ? '72px' : '96px'),
       bg: scrolled ? (ivory ? 'rgba(245,242,236,.95)' : 'rgba(17,17,17,.92)') : 'transparent',
       fg: ivory ? '#111111' : '#F5F2EC',
-      line: scrolled ? (ivory ? '#E2DBCF' : 'rgba(245,242,236,.08)') : 'transparent',
+      line: scrolled ? (ivory ? '#DDD4C5' : 'rgba(245,242,236,.08)') : 'transparent',
       btnLine: ivory ? 'rgba(17,17,17,.4)' : 'rgba(245,242,236,.45)',
       dark: ivory, light: !ivory,
       logoH: scrolled ? (m ? '36px' : '46px') : (m ? '42px' : '60px')
@@ -598,12 +632,12 @@ class Component extends DCLogic {
 
     const topics = [['novio', 'Novios'], ['padrinos', 'Padrinos'], ['graduacion', 'Graduación'], ['evento', 'Evento'], ['ninos', 'Niños'], ['talle', 'Consultar talle']].map(([k, label]) => {
       const a = topic === k;
-      return { label, active: a, bg: a ? '#111111' : 'transparent', fg: a ? '#F5F2EC' : '#111111', line: a ? '#111111' : '#CFC5B4', onClick: () => this.setState({ topic: a ? 'general' : k }) };
+      return { label, active: a, bg: a ? '#111111' : 'transparent', fg: a ? '#F5F2EC' : '#111111', line: a ? '#111111' : '#DDD4C5', onClick: () => this.setState({ topic: a ? 'general' : k }) };
     });
 
     const filters = [['todos', 'Todos'], ['trajes', 'Trajes'], ['smokings', 'Smokings'], ['novios', 'Novios'], ['padrinos', 'Padrinos'], ['ninos', 'Niños']].map(([k, label]) => {
       const a = filter === k;
-      return { label, active: a, bg: a ? '#111111' : 'transparent', fg: a ? '#F5F2EC' : '#111111', line: a ? '#111111' : '#C9BEAB', onClick: () => this.setState({ filter: k, hov: -1 }) };
+      return { label, active: a, bg: a ? '#111111' : 'transparent', fg: a ? '#F5F2EC' : '#111111', line: a ? '#111111' : '#DDD4C5', onClick: () => this.setState({ filter: k, hov: -1 }) };
     });
     const catWa = { trajes: 'general', smokings: 'evento', novios: 'novio', padrinos: 'padrinos', ninos: 'ninos' };
     const items = [
@@ -618,21 +652,45 @@ class Component extends DCLogic {
       ['g-nino-2', 'ninos', 'Pajecito', 'NIÑO · ceremonia'],
       ['g-padrinos-2', 'padrinos', 'Novio y padrinos', 'NOVIO + PADRINOS · horizontal']
     ].filter(it => filter === 'todos' || it[1] === filter);
+    const P = { 'g-smoking-negro': '50% 30%', 'g-novio-1': '50% 22%', 'g-azul-noche': '50% 28%', 'g-padrinos-1': '50% 0%', 'g-nino-1': '50% 8%', 'g-grafito': '50% 22%', 'g-detalle-mono': '50% 40%', 'g-novio-2': '50% 40%', 'g-nino-2': '50% 0%', 'g-padrinos-2': '50% 22%' };
     const G = {"g-smoking-negro":["1522968439036-e6338d0ed84f","Alvin Mahmudov","alvinmahmudov"],"g-novio-1":["1653936663217-f0a1ac722c96","Emily Studer","studerphotography"],"g-azul-noche":["1592878897400-43fb1f1cc324","Benjamin R.","dapperprofessional"],"g-padrinos-1":["1694394181749-50dcca5463d7","Jennifer Kalenberg","jkalen71"],"g-nino-1":["1760328249114-9010f6065b33","Devin Santiago","ydcphotography"],"g-grafito":["1598808503746-f34c53b9323e","LOGAN WEAVER | @LGNWVR","lgnwvr"],"g-detalle-mono":["1607514728685-a2f1a83e2a41","Copycat Fragrances","copycatfragrances"],"g-novio-2":["1745270029066-8c1dfb37c03c","Pablo Lancaster Jones","fotolancaster"],"g-nino-2":["1778166072550-a39e409d5dcf","Prince Onyedikachi Edeh","princeonyedikachiedeh"],"g-padrinos-2":["1664646327064-241a7bb721f7","Christophe Dusabe","bronzeshooter"]};
-    const patD = [[2, 2], [1, 1], [1, 2], [1, 1], [2, 1], [1, 1], [1, 2], [1, 1], [1, 1], [2, 1]];
-    const patM = [[1, 2], [1, 1], [1, 1], [2, 1]];
+    // [col, row, w, h] — explicit tilings with no holes
+    const L = {
+      d10: [[1,1,2,2],[3,1,1,2],[4,1,1,1],[4,2,1,1],[1,3,2,1],[3,3,1,1],[4,3,1,2],[1,4,1,1],[2,4,1,1],[3,4,1,1]],
+      m10: [[1,1,2,2],[1,3,1,2],[2,3,1,1],[2,4,1,1],[1,5,2,1],[1,6,1,1],[2,6,1,2],[1,7,1,1],[1,8,1,1],[2,8,1,1]],
+      d2: [[1,1,2,2],[3,1,2,2]], m2: [[1,1,1,2],[2,1,1,2]]
+    };
+    const nItems = items.length, cols = m ? 2 : 4;
+    const lay = L[(m ? 'm' : 'd') + nItems] || (() => {
+      const out = []; const extra = (cols - nItems % cols) % cols; let c = 1, r = 1;
+      for (let k = 0; k < nItems; k++) { const w = k === 0 ? 1 + extra : 1; out.push([c, r, w, 1]); c += w; if (c > cols) { c = 1; r++; } }
+      return out;
+    })();
     const gallery = items.map(([id, cat, label, ph], i) => {
-      const [cs, rs] = m ? patM[i % patM.length] : patD[i % patD.length];
+      const [gcc, grr, cs, rs] = lay[i];
+      const gc = `${gcc} / span ${cs}`, gr = `${grr} / span ${rs}`;
       const on = hov === i;
       return {
-        id, label, ph, cs, rs,
-        src: `https://images.unsplash.com/photo-${G[id][0]}?w=1000&q=70&auto=format&fit=crop`,
-        credit: `Photo by ${G[id][1]} on Unsplash`, creditHref: `https://unsplash.com/@${G[id][2]}`,
+        id, label, ph, cs, rs, gc, gr,
+        src: `https://images.unsplash.com/photo-${G[id][0]}?w=1000&q=70&auto=format`,
+        big: `https://images.unsplash.com/photo-${G[id][0]}?w=1800&q=80&auto=format`,
+        pos: P[id] || '50% 20%',
         href: this.waLink(catWa[cat], ''),
         op: on || m ? 1 : 0, pe: on || m ? 'auto' : 'none', scale: on ? 1.05 : 1,
-        enter: () => this.setState({ hov: i }), leave: () => this.setState({ hov: -1 })
+        enter: () => this.setState({ hov: i }), leave: () => this.setState({ hov: -1 }),
+        open: () => this.setState({ lb: i }),
+        key: (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.setState({ lb: i }); } },
+        stop: (e) => e.stopPropagation()
       };
     });
+    this._galN = gallery.length;
+    const lbi = this.state.lb;
+    const lbItem = lbi >= 0 && gallery[lbi] ? gallery[lbi] : null;
+    const lb = lbItem ? { big: lbItem.big, label: lbItem.label, href: lbItem.href, count: `${lbi + 1} / ${gallery.length}` } : { big: '', label: '', href: '', count: '' };
+    const lbClose = () => this.setState({ lb: -1 });
+    const lbStop = (e) => e.stopPropagation();
+    const lbPrev = (e) => { e.stopPropagation(); this.lbStep(-1); };
+    const lbNext = (e) => { e.stopPropagation(); this.lbStep(1); };
 
     const stepList = [
       { n: '01', t: 'Consultá', d: 'Contanos qué evento tenés y para qué fecha.' },
@@ -648,6 +706,7 @@ class Component extends DCLogic {
     return {
       isMobile: m, isDesktop: !m, menuOpen: menu && m, panelOpen: panel,
       hdr, wa, topics, filters, gallery, stepList, steps, date,
+      lbOpen: !!lbItem, lb, lbImg: lbItem ? React.createElement('img', { key: lb.big, src: lb.big, alt: lb.label, onClick: lbStop, style: { display: 'block', maxWidth: 'min(100%,1200px)', maxHeight: 'calc(100svh - 190px)', width: 'auto', height: 'auto', objectFit: 'contain', cursor: 'default', boxShadow: '0 30px 80px rgba(0,0,0,.5)' } }) : null, lbClose, lbStop, lbPrev, lbNext,
       oc: m
         ? { s1: 6, s2: 6, s3: 3, s4: 3, s5: 6, hBig: '520px', hMid: '380px', hSmall: '320px' }
         : { s1: 3, s2: 3, s3: 2, s4: 2, s5: 2, hBig: '620px', hMid: '620px', hSmall: '460px' },
@@ -655,8 +714,8 @@ class Component extends DCLogic {
       padAspect: m ? '4 / 3' : '21 / 9',
       footPad: m ? '104px' : '48px',
       ubic: w < 760
-        ? { cols: 'minmax(0,1fr)', pad: '72px 22px 32px', mapPad: '0 16px 72px' }
-        : { cols: 'minmax(0,0.9fr) minmax(0,1.1fr)', pad: 'clamp(64px,8vw,120px) clamp(24px,3vw,48px) clamp(64px,8vw,120px) clamp(24px,5vw,80px)', mapPad: 'clamp(48px,6vw,96px) clamp(24px,5vw,80px) clamp(48px,6vw,96px) 0' },
+        ? { cols: 'minmax(0,1fr)', pad: '72px 22px 48px', mapH: '360px' }
+        : { cols: 'minmax(0,1fr) minmax(0,1fr)', pad: 'clamp(72px,9vw,140px) clamp(24px,5vw,80px)', mapH: '620px' },
       hero: m ? { ls: '.12em', btnW: '100%' } : { ls: '.2em', btnW: 'auto' },
       fab: { offset: m ? '18px' : '28px', size: m ? '60px' : '64px' },
       panel: m

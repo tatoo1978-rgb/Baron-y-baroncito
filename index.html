@@ -66,7 +66,7 @@ details[open]>summary>span{transform:rotate(45deg)}
           <a href="#como-funciona" style="color:inherit" style-hover="opacity:.6">Cómo funciona</a>
           <a href="#contacto" style="color:inherit" style-hover="opacity:.6">Contacto</a>
         </nav>
-        <a href="{{ wa.general }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:13px 20px;border:1px solid {{ hdr.btnLine }};color:inherit;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;transition:all .3s" style-hover="background:#C9AE7E;border-color:#C9AE7E;color:#111111">
+        <a href="{{ wa.general }}" onClick="{{ askGeneral }}" style="display:flex;align-items:center;gap:10px;padding:13px 20px;border:1px solid {{ hdr.btnLine }};color:inherit;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;transition:all .3s" style-hover="background:#C9AE7E;border-color:#C9AE7E;color:#111111">
           <span style="width:7px;height:7px;border-radius:50%;background:#25D366"></span>
           Consultar por WhatsApp
         </a>
@@ -96,7 +96,7 @@ details[open]>summary>span{transform:rotate(45deg)}
         <a href="#como-funciona" onClick="{{ closeMenu }}">Cómo funciona</a>
         <a href="#contacto" onClick="{{ closeMenu }}">Contacto</a>
       </nav>
-      <a href="{{ wa.general }}" target="_blank" rel="noopener" style="margin-top:auto;display:flex;justify-content:center;align-items:center;gap:10px;height:56px;background:#F5F2EC;color:#111111;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase">
+      <a href="{{ wa.general }}" onClick="{{ askGeneral }}" style="margin-top:auto;display:flex;justify-content:center;align-items:center;gap:10px;height:56px;background:#F5F2EC;color:#111111;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase">
         <span style="width:8px;height:8px;border-radius:50%;background:#25D366"></span>Consultar por WhatsApp
       </a>
     </div>
@@ -120,7 +120,7 @@ details[open]>summary>span{transform:rotate(45deg)}
           </h1>
           <p style="margin-top:clamp(12px,2.4vh,24px);max-width:520px;font-size:clamp(16px,1.4vw,19px);line-height:1.6;color:#F5F2EC;text-wrap:pretty">Trajes, smokings y looks de etiqueta para novios, padrinos, graduaciones, fiestas de 15 y eventos especiales.</p>
           <div style="margin-top:clamp(18px,3.4vh,34px);display:flex;flex-wrap:wrap;gap:12px;pointer-events:auto;text-shadow:none">
-            <a href="{{ wa.general }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 28px;width:{{ hero.btnW }};background:#F5F2EC;color:#111111;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .3s" style-hover="background:#E6D6B8;color:#111111">Consultar disponibilidad</a>
+            <a href="{{ wa.general }}" onClick="{{ askGeneral }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 28px;width:{{ hero.btnW }};background:#F5F2EC;color:#111111;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .3s" style-hover="background:#E6D6B8;color:#111111">Consultar disponibilidad</a>
             <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}"><a href="#trajes" style="display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 32px;border:1px solid rgba(245,242,236,.55);color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:border-color .3s" style-hover="border-color:#F5F2EC;color:#F5F2EC">Ver trajes</a></sc-if>
             <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><a href="#trajes" style="display:inline-flex;align-items:center;min-height:44px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#F5F2EC;border-bottom:1px solid #D8C29A">Ver trajes →</a></sc-if>
           </div>
@@ -226,7 +226,7 @@ details[open]>summary>span{transform:rotate(45deg)}
               <div style="position:absolute;inset:0;transform:scale({{ g.scale }});transition:transform 1.2s cubic-bezier(.2,.7,.2,1)"><img src="{{ g.src }}" alt="{{ g.label }}" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover;object-position:{{ g.pos }}"></div>
               <figcaption style="position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(14px,1.8vw,24px);background:linear-gradient(180deg,rgba(17,17,17,0) 40%,rgba(17,17,17,.78) 100%);opacity:{{ g.op }};transition:opacity .6s ease;color:#F5F2EC">
                 <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,1.8vw,26px);line-height:1.1">{{ g.label }}</span>
-                <a href="{{ g.href }}" onClick="{{ g.stop }}" target="_blank" rel="noopener" style="pointer-events:{{ g.pe }};margin-top:8px;display:inline-flex;align-items:center;min-height:32px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8">Consultar disponibilidad →</a>
+                <a href="{{ g.href }}" onClick="{{ g.stop }}" style="pointer-events:{{ g.pe }};margin-top:8px;display:inline-flex;align-items:center;min-height:32px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8">Consultar disponibilidad →</a>
               </figcaption>
             </figure>
           </sc-for>
@@ -255,7 +255,7 @@ details[open]>summary>span{transform:rotate(45deg)}
             <li style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(245,242,236,.14);font-size:15px"><span style="flex:none;min-width:30px;font-family:'Cormorant Garamond',serif;font-weight:600;color:#C9AE7E;font-size:19px;letter-spacing:.04em">V.</span>Accesorios</li>
             <li style="display:flex;gap:16px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(245,242,236,.14);font-size:15px"><span style="flex:none;min-width:30px;font-family:'Cormorant Garamond',serif;font-weight:600;color:#C9AE7E;font-size:19px;letter-spacing:.04em">VI.</span>Coordinación con padrinos</li>
           </ol>
-          <a href="{{ wa.novio }}" target="_blank" rel="noopener" style="margin-top:44px;display:inline-flex;align-items:center;justify-content:center;min-height:58px;padding:0 34px;background:#F5F2EC;color:#111111;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .3s" style-hover="background:#E6D6B8;color:#111111">Quiero consultar por mi traje</a>
+          <a href="{{ wa.novio }}" onClick="{{ ask.novio }}" style="margin-top:44px;display:inline-flex;align-items:center;justify-content:center;min-height:58px;padding:0 34px;background:#F5F2EC;color:#111111;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .3s" style-hover="background:#E6D6B8;color:#111111">Quiero consultar por mi traje</a>
         </div>
       </div>
     </section>
@@ -273,7 +273,7 @@ details[open]>summary>span{transform:rotate(45deg)}
           </div>
           <div>
             <p style="max-width:480px;font-size:17px;line-height:1.65;color:#4A4642;text-wrap:pretty">Te ayudamos a coordinar los looks de padrinos y acompañantes para que todo el grupo se vea en armonía con el novio.</p>
-            <a href="{{ wa.padrinos }}" target="_blank" rel="noopener" style="margin-top:28px;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;background:#111111;color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .3s" style-hover="background:#1A1918;color:#F5F2EC">Consultar por trajes para padrinos</a>
+            <a href="{{ wa.padrinos }}" onClick="{{ ask.padrinos }}" style="margin-top:28px;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;background:#111111;color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .3s" style-hover="background:#1A1918;color:#F5F2EC">Consultar por trajes para padrinos</a>
           </div>
         </div>
       </div>
@@ -288,7 +288,7 @@ details[open]>summary>span{transform:rotate(45deg)}
           <div style="padding:clamp(24px,3vw,44px);display:flex;flex-direction:column;gap:14px;flex:1">
             <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(34px,3.4vw,48px);line-height:1">Graduaciones</h3>
             <p style="font-size:16px;line-height:1.6;color:#F5F2EC;max-width:420px">Un look especial para celebrar un logro importante.</p>
-            <a href="{{ wa.graduacion }}" target="_blank" rel="noopener" style="margin-top:auto;padding-top:12px;display:inline-flex;align-items:center;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8" style-hover="color:#F5F2EC">Consultar por graduación →</a>
+            <a href="{{ wa.graduacion }}" onClick="{{ ask.graduacion }}" style="margin-top:auto;padding-top:12px;display:inline-flex;align-items:center;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8" style-hover="color:#F5F2EC">Consultar por graduación →</a>
           </div>
         </article>
         <article data-reveal="" style="background:#1A1918;color:#F5F2EC;display:flex;flex-direction:column">
@@ -296,7 +296,7 @@ details[open]>summary>span{transform:rotate(45deg)}
           <div style="padding:clamp(24px,3vw,44px);display:flex;flex-direction:column;gap:14px;flex:1">
             <h3 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(34px,3.4vw,48px);line-height:1">Eventos y fiestas</h3>
             <p style="font-size:16px;line-height:1.6;color:#F5F2EC;max-width:420px">Trajes, smokings y looks de etiqueta para fiestas de 15, recepciones y ocasiones especiales. También para papás y hermanos de la quinceañera.</p>
-            <a href="{{ wa.evento }}" target="_blank" rel="noopener" style="margin-top:auto;padding-top:12px;display:inline-flex;align-items:center;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8" style-hover="color:#F5F2EC">Consultar por un evento →</a>
+            <a href="{{ wa.evento }}" onClick="{{ ask.evento }}" style="margin-top:auto;padding-top:12px;display:inline-flex;align-items:center;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8" style-hover="color:#F5F2EC">Consultar por un evento →</a>
           </div>
         </article>
       </div>
@@ -309,7 +309,7 @@ details[open]>summary>span{transform:rotate(45deg)}
           <p style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#765E36">Baroncito</p>
           <h2 id="t-ninos" style="margin-top:16px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(40px,5.2vw,72px);line-height:1;letter-spacing:-.015em;text-wrap:balance">Los más chicos también tienen <em>su gran momento.</em></h2>
           <p style="margin-top:22px;max-width:460px;font-size:17px;line-height:1.65;color:#4A4642">Opciones elegantes para acompañar bodas, fiestas, ceremonias y eventos especiales.</p>
-          <a href="{{ wa.ninos }}" target="_blank" rel="noopener" style="margin-top:32px;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;background:#111111;color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .3s" style-hover="background:#1A1918;color:#F5F2EC">Consultar trajes infantiles</a>
+          <a href="{{ wa.ninos }}" onClick="{{ ask.ninos }}" style="margin-top:32px;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;background:#111111;color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:background .3s" style-hover="background:#1A1918;color:#F5F2EC">Consultar trajes infantiles</a>
         </div>
         <div data-reveal="" style="order:1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(12px,1.6vw,20px);align-items:start">
           <figure style="margin:0;position:relative">
@@ -362,7 +362,7 @@ details[open]>summary>span{transform:rotate(45deg)}
           <li style="display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-top:1px solid rgba(245,242,236,.14);font-size:15px">Asesoramiento<span style="color:#C9AE7E">✓</span></li>
           <li style="display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-top:1px solid rgba(245,242,236,.14);border-bottom:1px solid rgba(245,242,236,.14);font-size:15px">Preparación para el evento<span style="color:#C9AE7E">✓</span></li>
         </ul>
-        <a href="{{ wa.talle }}" target="_blank" rel="noopener" style="margin-top:36px;align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;border:1px solid rgba(245,242,236,.5);color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:all .3s" style-hover="background:#F5F2EC;color:#111111">Reservar una prueba</a>
+        <a href="{{ wa.talle }}" onClick="{{ ask.talle }}" style="margin-top:36px;align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;border:1px solid rgba(245,242,236,.5);color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:all .3s" style-hover="background:#F5F2EC;color:#111111">Reservar una prueba</a>
       </div>
     </section>
 
@@ -509,7 +509,7 @@ details[open]>summary>span{transform:rotate(45deg)}
       {{ lbImg }}
       <div onClick="{{ lbStop }}" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 28px;color:#F5F2EC;cursor:default;text-align:center">
         <span style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.1">{{ lb.label }}</span>
-        <a href="{{ lb.href }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8;border-bottom:1px solid #C9AE7E">Consultar disponibilidad →</a>
+        <a href="{{ lb.href }}" onClick="{{ lb.ask }}" style="display:inline-flex;align-items:center;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8;border-bottom:1px solid #C9AE7E">Consultar disponibilidad →</a>
       </div>
       <button onClick="{{ lbPrev }}" aria-label="Foto anterior" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;background:rgba(245,242,236,.1);border:1px solid rgba(245,242,236,.45);color:#F5F2EC;font-size:22px;cursor:pointer">←</button>
       <button onClick="{{ lbNext }}" aria-label="Foto siguiente" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;background:rgba(245,242,236,.1);border:1px solid rgba(245,242,236,.45);color:#F5F2EC;font-size:22px;cursor:pointer">→</button>
@@ -522,18 +522,18 @@ details[open]>summary>span{transform:rotate(45deg)}
     <div role="dialog" aria-label="Consulta rápida por WhatsApp" style="position:fixed;z-index:70;right:{{ panel.right }};left:{{ panel.left }};bottom:{{ panel.bottom }};width:{{ panel.width }};background:#F5F2EC;color:#111111;box-shadow:0 30px 80px -20px rgba(0,0,0,.45);border:1px solid #DDD4C5;padding:26px">
       <div style="display:flex;justify-content:space-between;align-items:start;gap:12px">
         <div>
-          <p style="font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:#765E36">Consulta rápida</p>
-          <p style="margin-top:8px;font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1.05">¿Para qué ocasión?</p>
+          <p style="font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:#765E36">{{ panelEyebrow }}</p>
+          <p style="margin-top:8px;font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1.05">{{ panelTitle }}</p>
         </div>
         <button onClick="{{ togglePanel }}" aria-label="Cerrar" style="width:44px;height:44px;margin:-10px -12px 0 0;background:none;border:0;font-size:24px;cursor:pointer;color:#111111">×</button>
       </div>
-      <div style="margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <sc-if value="{{ showTopics }}" hint-placeholder-val="{{ true }}"><div style="margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
         <sc-for list="{{ topics }}" as="t" hint-placeholder-count="6">
           <button onClick="{{ t.onClick }}" aria-pressed="{{ t.active }}" style="min-height:46px;padding:0 10px;background:{{ t.bg }};color:{{ t.fg }};border:1px solid {{ t.line }};font-family:'Manrope',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .25s">{{ t.label }}</button>
         </sc-for>
-      </div>
+      </div></sc-if>
       <label style="margin-top:18px;display:block;font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#4A4642">Fecha del evento
-        <input type="date" value="{{ date }}" onChange="{{ setDate }}" style="margin-top:8px;display:block;width:100%;height:48px;padding:0 14px;background:#FBF9F5;border:1px solid #DDD4C5;border-radius:0;font-family:'Manrope',sans-serif;font-size:15px;color:#111111">
+        <input ref="{{ dateRef }}" type="date" value="{{ date }}" onChange="{{ setDate }}" style="margin-top:8px;display:block;width:100%;height:48px;padding:0 14px;background:#FBF9F5;border:1px solid #DDD4C5;border-radius:0;font-family:'Manrope',sans-serif;font-size:15px;color:#111111">
       </label>
       <a href="{{ wa.current }}" target="_blank" rel="noopener" style="margin-top:18px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;background:#111111;color:#F5F2EC;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase" style-hover="background:#1A1918;color:#F5F2EC"><span style="width:8px;height:8px;border-radius:50%;background:#25D366"></span>Enviar por WhatsApp</a>
     </div>
@@ -546,7 +546,17 @@ details[open]>summary>span{transform:rotate(45deg)}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;whatsapp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+5493416054619&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacto&quot;},&quot;instagram&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://www.instagram.com/baronybaroncito/&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacto&quot;},&quot;facebook&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacto&quot;},&quot;headerTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;oscuro&quot;,&quot;marfil&quot;],&quot;default&quot;:&quot;oscuro&quot;,&quot;tsType&quot;:&quot;'oscuro'|'marfil'&quot;,&quot;section&quot;:&quot;Diseño&quot;},&quot;quickPanel&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Diseño&quot;}}">
 class Component extends DCLogic {
-  state = { scrolled: false, w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false, panel: false, topic: 'general', date: '', filter: 'todos', hov: -1, lb: -1 };
+  dateRef = React.createRef();
+  askFor(k, ev) {
+    if (!(this.props.quickPanel ?? true)) { if (ev && ev.currentTarget && ev.currentTarget.target !== '_blank') { ev.preventDefault(); window.open(ev.currentTarget.href, '_blank', 'noopener'); } return; }
+    if (ev) ev.preventDefault();
+    this.setState({ panel: true, dateOnly: k !== 'general', topic: k, menu: false }, () => {
+      const el = this.dateRef.current; if (!el || k === 'general') return;
+      el.focus({ preventScroll: true });
+      try { el.showPicker && el.showPicker(); } catch (_) {}
+    });
+  }
+  state = { dateOnly: false, scrolled: false, w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false, panel: false, topic: 'general', date: '', filter: 'todos', hov: -1, lb: -1 };
 
   componentDidMount() {
     this._s = () => { const s = window.scrollY > 40; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
@@ -626,8 +636,12 @@ class Component extends DCLogic {
     const quick = this.props.quickPanel ?? true;
     const togglePanel = () => {
       if (!quick) { window.open(wa.general, '_blank', 'noopener'); return; }
-      this.setState(s => ({ panel: !s.panel }));
+      this.setState(s => ({ panel: !s.panel, dateOnly: false }));
     };
+    const LBL = { novio: 'Novios', padrinos: 'Padrinos', graduacion: 'Graduación', evento: 'Eventos y fiestas', ninos: 'Niños', talle: 'Consulta de talle' };
+    const ask = {};
+    Object.keys(LBL).forEach(k => ask[k] = (ev) => this.askFor(k, ev));
+    const dOnly = !!this.state.dateOnly && LBL[topic];
 
     const topics = [['novio', 'Novios'], ['padrinos', 'Padrinos'], ['graduacion', 'Graduación'], ['evento', 'Evento'], ['ninos', 'Niños'], ['talle', 'Consultar talle']].map(([k, label]) => {
       const a = topic === k;
@@ -679,13 +693,13 @@ class Component extends DCLogic {
         enter: () => this.setState({ hov: i }), leave: () => this.setState({ hov: -1 }),
         open: () => this.setState({ lb: i }),
         key: (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.setState({ lb: i }); } },
-        stop: (e) => e.stopPropagation()
+        stop: (e) => { e.stopPropagation(); this.askFor(catWa[cat], e); }
       };
     });
     this._galN = gallery.length;
     const lbi = this.state.lb;
     const lbItem = lbi >= 0 && gallery[lbi] ? gallery[lbi] : null;
-    const lb = lbItem ? { big: lbItem.big, label: lbItem.label, href: lbItem.href, count: `${lbi + 1} / ${gallery.length}` } : { big: '', label: '', href: '', count: '' };
+    const lb = lbItem ? { big: lbItem.big, label: lbItem.label, href: lbItem.href, ask: (e) => { e.stopPropagation(); this.setState({ lb: -1 }); this.askFor(catWa[items[lbi][1]], e); }, count: `${lbi + 1} / ${gallery.length}` } : { big: '', label: '', href: '', ask: null, count: '' };
     const lbClose = () => this.setState({ lb: -1 });
     const lbStop = (e) => e.stopPropagation();
     const lbPrev = (e) => { e.stopPropagation(); this.lbStep(-1); };
@@ -703,7 +717,8 @@ class Component extends DCLogic {
       : { cols: 'repeat(5,minmax(0,1fr))', gap: '24px', dir: 'column', align: 'center', text: 'center', innerGap: '26px', textPad: '0', line: 'top:28px;left:10%;right:10%;height:1px' };
 
     return {
-      isMobile: m, isDesktop: !m, menuOpen: menu && m, panelOpen: panel,
+      isMobile: m, isDesktop: !m, menuOpen: menu && m, panelOpen: panel, ask, askGeneral: (ev) => this.askFor('general', ev), dateRef: this.dateRef, showTopics: !dOnly,
+      panelEyebrow: dOnly ? LBL[topic] : 'Consulta rápida', panelTitle: dOnly ? '¿Cuándo es tu evento?' : '¿Para qué ocasión?',
       hdr, wa, topics, filters, gallery, stepList, steps, date,
       lbOpen: !!lbItem, lb, lbImg: lbItem ? React.createElement('img', { key: lb.big, src: lb.big, alt: lb.label, onClick: lbStop, style: { display: 'block', maxWidth: 'min(100%,1200px)', maxHeight: 'calc(100svh - 190px)', width: 'auto', height: 'auto', objectFit: 'contain', cursor: 'default', boxShadow: '0 30px 80px rgba(0,0,0,.5)' } }) : null, lbClose, lbStop, lbPrev, lbNext,
       oc: m

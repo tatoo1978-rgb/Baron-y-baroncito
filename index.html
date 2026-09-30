@@ -45,6 +45,7 @@ input[type=date]::-webkit-date-and-time-value{text-align:left;min-height:1.4em}
 input[type=date]::-webkit-calendar-picker-indicator{position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;margin:0;padding:0;opacity:0;background:transparent;color:transparent;cursor:pointer}
 input[type=date][data-empty="true"]::-webkit-datetime-edit{color:transparent}
 details[open]>summary>span{transform:rotate(45deg)}
+[data-count]::before{content:attr(data-count)}
 ::selection{background:#E6D6B8;color:#111111}
 </style>
 </helmet>
@@ -217,20 +218,84 @@ details[open]>summary>span{transform:rotate(45deg)}
           <p style="margin-top:18px;font-size:17px;line-height:1.6;color:#4A4642">Encontrá el estilo que mejor representa la ocasión.</p>
         </div>
         <div role="tablist" aria-label="Filtrar galería" style="margin:clamp(32px,4vw,52px) auto clamp(28px,3vw,44px);display:flex;flex-wrap:wrap;justify-content:center;gap:8px">
-          <sc-for list="{{ filters }}" as="f" hint-placeholder-count="6">
-            <button role="tab" aria-selected="{{ f.active }}" onClick="{{ f.onClick }}" style="min-height:44px;padding:0 20px;background:{{ f.bg }};color:{{ f.fg }};border:1px solid {{ f.line }};font-family:'Manrope',sans-serif;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:all .3s">{{ f.label }}</button>
-          </sc-for>
+          <button role="tab" aria-selected="{{ fl.todos.active }}" onClick="{{ fl.todos.onClick }}" style="min-height:44px;padding:0 20px;background:{{ fl.todos.bg }};color:{{ fl.todos.fg }};border:1px solid {{ fl.todos.line }};font-family:'Manrope',sans-serif;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:all .3s">Todos</button>
+          <button role="tab" aria-selected="{{ fl.trajes.active }}" onClick="{{ fl.trajes.onClick }}" style="min-height:44px;padding:0 20px;background:{{ fl.trajes.bg }};color:{{ fl.trajes.fg }};border:1px solid {{ fl.trajes.line }};font-family:'Manrope',sans-serif;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:all .3s">Trajes</button>
+          <button role="tab" aria-selected="{{ fl.smokings.active }}" onClick="{{ fl.smokings.onClick }}" style="min-height:44px;padding:0 20px;background:{{ fl.smokings.bg }};color:{{ fl.smokings.fg }};border:1px solid {{ fl.smokings.line }};font-family:'Manrope',sans-serif;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:all .3s">Smokings</button>
+          <button role="tab" aria-selected="{{ fl.novios.active }}" onClick="{{ fl.novios.onClick }}" style="min-height:44px;padding:0 20px;background:{{ fl.novios.bg }};color:{{ fl.novios.fg }};border:1px solid {{ fl.novios.line }};font-family:'Manrope',sans-serif;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:all .3s">Novios</button>
+          <button role="tab" aria-selected="{{ fl.padrinos.active }}" onClick="{{ fl.padrinos.onClick }}" style="min-height:44px;padding:0 20px;background:{{ fl.padrinos.bg }};color:{{ fl.padrinos.fg }};border:1px solid {{ fl.padrinos.line }};font-family:'Manrope',sans-serif;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:all .3s">Padrinos</button>
+          <button role="tab" aria-selected="{{ fl.ninos.active }}" onClick="{{ fl.ninos.onClick }}" style="min-height:44px;padding:0 20px;background:{{ fl.ninos.bg }};color:{{ fl.ninos.fg }};border:1px solid {{ fl.ninos.line }};font-family:'Manrope',sans-serif;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:all .3s">Niños</button>
         </div>
         <div style="display:grid;grid-template-columns:repeat({{ gal.cols }},minmax(0,1fr));grid-auto-rows:{{ gal.row }};grid-auto-flow:dense;gap:clamp(8px,1vw,14px)">
-          <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="8">
-            <figure onMouseEnter="{{ g.enter }}" onMouseLeave="{{ g.leave }}" onClick="{{ g.open }}" onKeyDown="{{ g.key }}" role="button" tabIndex="0" aria-label="Ampliar foto: {{ g.label }}" style="margin:0;grid-column:{{ g.gc }};grid-row:{{ g.gr }};position:relative;overflow:hidden;background:#DDD4C5;cursor:zoom-in">
-              <div style="position:absolute;inset:0;transform:scale({{ g.scale }});transition:transform 1.2s cubic-bezier(.2,.7,.2,1)"><img src="{{ g.src }}" alt="{{ g.label }}" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover;object-position:{{ g.pos }}"></div>
-              <figcaption style="position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(14px,1.8vw,24px);background:linear-gradient(180deg,rgba(17,17,17,0) 40%,rgba(17,17,17,.78) 100%);opacity:{{ g.op }};transition:opacity .6s ease;color:#F5F2EC">
-                <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,1.8vw,26px);line-height:1.1">{{ g.label }}</span>
-                <a href="{{ g.href }}" onClick="{{ g.stop }}" style="pointer-events:{{ g.pe }};margin-top:8px;display:inline-flex;align-items:center;min-height:32px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8">Consultar disponibilidad →</a>
+          <sc-if value="{{ gv.g_smoking_negro.show }}" hint-placeholder-val="{{ true }}"><figure onMouseEnter="{{ gv.g_smoking_negro.enter }}" onMouseLeave="{{ gv.g_smoking_negro.leave }}" onClick="{{ gv.g_smoking_negro.open }}" onKeyDown="{{ gv.g_smoking_negro.key }}" role="button" tabIndex="0" aria-label="Ampliar foto: Smoking negro" style="margin:0;grid-column:{{ gv.g_smoking_negro.gc }};grid-row:{{ gv.g_smoking_negro.gr }};position:relative;overflow:hidden;background:#DDD4C5;cursor:zoom-in">
+              <div style="position:absolute;inset:0;transform:scale({{ gv.g_smoking_negro.scale }});transition:transform 1.2s cubic-bezier(.2,.7,.2,1)"><img src="{{ gv.g_smoking_negro.src }}" alt="Smoking negro" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover;object-position:{{ gv.g_smoking_negro.pos }}"></div>
+              <figcaption style="position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(14px,1.8vw,24px);background:linear-gradient(180deg,rgba(17,17,17,0) 40%,rgba(17,17,17,.78) 100%);opacity:{{ gv.g_smoking_negro.op }};transition:opacity .6s ease;color:#F5F2EC">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,1.8vw,26px);line-height:1.1">Smoking negro</span>
+                <a href="{{ gv.g_smoking_negro.href }}" onClick="{{ gv.g_smoking_negro.stop }}" style="pointer-events:{{ gv.g_smoking_negro.pe }};margin-top:8px;display:inline-flex;align-items:center;min-height:32px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8">Consultar disponibilidad →</a>
               </figcaption>
-            </figure>
-          </sc-for>
+            </figure></sc-if>
+          <sc-if value="{{ gv.g_novio_1.show }}" hint-placeholder-val="{{ true }}"><figure onMouseEnter="{{ gv.g_novio_1.enter }}" onMouseLeave="{{ gv.g_novio_1.leave }}" onClick="{{ gv.g_novio_1.open }}" onKeyDown="{{ gv.g_novio_1.key }}" role="button" tabIndex="0" aria-label="Ampliar foto: Traje de novio" style="margin:0;grid-column:{{ gv.g_novio_1.gc }};grid-row:{{ gv.g_novio_1.gr }};position:relative;overflow:hidden;background:#DDD4C5;cursor:zoom-in">
+              <div style="position:absolute;inset:0;transform:scale({{ gv.g_novio_1.scale }});transition:transform 1.2s cubic-bezier(.2,.7,.2,1)"><img src="{{ gv.g_novio_1.src }}" alt="Traje de novio" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover;object-position:{{ gv.g_novio_1.pos }}"></div>
+              <figcaption style="position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(14px,1.8vw,24px);background:linear-gradient(180deg,rgba(17,17,17,0) 40%,rgba(17,17,17,.78) 100%);opacity:{{ gv.g_novio_1.op }};transition:opacity .6s ease;color:#F5F2EC">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,1.8vw,26px);line-height:1.1">Traje de novio</span>
+                <a href="{{ gv.g_novio_1.href }}" onClick="{{ gv.g_novio_1.stop }}" style="pointer-events:{{ gv.g_novio_1.pe }};margin-top:8px;display:inline-flex;align-items:center;min-height:32px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8">Consultar disponibilidad →</a>
+              </figcaption>
+            </figure></sc-if>
+          <sc-if value="{{ gv.g_azul_noche.show }}" hint-placeholder-val="{{ true }}"><figure onMouseEnter="{{ gv.g_azul_noche.enter }}" onMouseLeave="{{ gv.g_azul_noche.leave }}" onClick="{{ gv.g_azul_noche.open }}" onKeyDown="{{ gv.g_azul_noche.key }}" role="button" tabIndex="0" aria-label="Ampliar foto: Traje azul noche" style="margin:0;grid-column:{{ gv.g_azul_noche.gc }};grid-row:{{ gv.g_azul_noche.gr }};position:relative;overflow:hidden;background:#DDD4C5;cursor:zoom-in">
+              <div style="position:absolute;inset:0;transform:scale({{ gv.g_azul_noche.scale }});transition:transform 1.2s cubic-bezier(.2,.7,.2,1)"><img src="{{ gv.g_azul_noche.src }}" alt="Traje azul noche" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover;object-position:{{ gv.g_azul_noche.pos }}"></div>
+              <figcaption style="position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(14px,1.8vw,24px);background:linear-gradient(180deg,rgba(17,17,17,0) 40%,rgba(17,17,17,.78) 100%);opacity:{{ gv.g_azul_noche.op }};transition:opacity .6s ease;color:#F5F2EC">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,1.8vw,26px);line-height:1.1">Traje azul noche</span>
+                <a href="{{ gv.g_azul_noche.href }}" onClick="{{ gv.g_azul_noche.stop }}" style="pointer-events:{{ gv.g_azul_noche.pe }};margin-top:8px;display:inline-flex;align-items:center;min-height:32px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8">Consultar disponibilidad →</a>
+              </figcaption>
+            </figure></sc-if>
+          <sc-if value="{{ gv.g_padrinos_1.show }}" hint-placeholder-val="{{ true }}"><figure onMouseEnter="{{ gv.g_padrinos_1.enter }}" onMouseLeave="{{ gv.g_padrinos_1.leave }}" onClick="{{ gv.g_padrinos_1.open }}" onKeyDown="{{ gv.g_padrinos_1.key }}" role="button" tabIndex="0" aria-label="Ampliar foto: Padrinos coordinados" style="margin:0;grid-column:{{ gv.g_padrinos_1.gc }};grid-row:{{ gv.g_padrinos_1.gr }};position:relative;overflow:hidden;background:#DDD4C5;cursor:zoom-in">
+              <div style="position:absolute;inset:0;transform:scale({{ gv.g_padrinos_1.scale }});transition:transform 1.2s cubic-bezier(.2,.7,.2,1)"><img src="{{ gv.g_padrinos_1.src }}" alt="Padrinos coordinados" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover;object-position:{{ gv.g_padrinos_1.pos }}"></div>
+              <figcaption style="position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(14px,1.8vw,24px);background:linear-gradient(180deg,rgba(17,17,17,0) 40%,rgba(17,17,17,.78) 100%);opacity:{{ gv.g_padrinos_1.op }};transition:opacity .6s ease;color:#F5F2EC">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,1.8vw,26px);line-height:1.1">Padrinos coordinados</span>
+                <a href="{{ gv.g_padrinos_1.href }}" onClick="{{ gv.g_padrinos_1.stop }}" style="pointer-events:{{ gv.g_padrinos_1.pe }};margin-top:8px;display:inline-flex;align-items:center;min-height:32px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8">Consultar disponibilidad →</a>
+              </figcaption>
+            </figure></sc-if>
+          <sc-if value="{{ gv.g_nino_1.show }}" hint-placeholder-val="{{ true }}"><figure onMouseEnter="{{ gv.g_nino_1.enter }}" onMouseLeave="{{ gv.g_nino_1.leave }}" onClick="{{ gv.g_nino_1.open }}" onKeyDown="{{ gv.g_nino_1.key }}" role="button" tabIndex="0" aria-label="Ampliar foto: Traje infantil" style="margin:0;grid-column:{{ gv.g_nino_1.gc }};grid-row:{{ gv.g_nino_1.gr }};position:relative;overflow:hidden;background:#DDD4C5;cursor:zoom-in">
+              <div style="position:absolute;inset:0;transform:scale({{ gv.g_nino_1.scale }});transition:transform 1.2s cubic-bezier(.2,.7,.2,1)"><img src="{{ gv.g_nino_1.src }}" alt="Traje infantil" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover;object-position:{{ gv.g_nino_1.pos }}"></div>
+              <figcaption style="position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(14px,1.8vw,24px);background:linear-gradient(180deg,rgba(17,17,17,0) 40%,rgba(17,17,17,.78) 100%);opacity:{{ gv.g_nino_1.op }};transition:opacity .6s ease;color:#F5F2EC">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,1.8vw,26px);line-height:1.1">Traje infantil</span>
+                <a href="{{ gv.g_nino_1.href }}" onClick="{{ gv.g_nino_1.stop }}" style="pointer-events:{{ gv.g_nino_1.pe }};margin-top:8px;display:inline-flex;align-items:center;min-height:32px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8">Consultar disponibilidad →</a>
+              </figcaption>
+            </figure></sc-if>
+          <sc-if value="{{ gv.g_grafito.show }}" hint-placeholder-val="{{ true }}"><figure onMouseEnter="{{ gv.g_grafito.enter }}" onMouseLeave="{{ gv.g_grafito.leave }}" onClick="{{ gv.g_grafito.open }}" onKeyDown="{{ gv.g_grafito.key }}" role="button" tabIndex="0" aria-label="Ampliar foto: Traje gris grafito" style="margin:0;grid-column:{{ gv.g_grafito.gc }};grid-row:{{ gv.g_grafito.gr }};position:relative;overflow:hidden;background:#DDD4C5;cursor:zoom-in">
+              <div style="position:absolute;inset:0;transform:scale({{ gv.g_grafito.scale }});transition:transform 1.2s cubic-bezier(.2,.7,.2,1)"><img src="{{ gv.g_grafito.src }}" alt="Traje gris grafito" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover;object-position:{{ gv.g_grafito.pos }}"></div>
+              <figcaption style="position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(14px,1.8vw,24px);background:linear-gradient(180deg,rgba(17,17,17,0) 40%,rgba(17,17,17,.78) 100%);opacity:{{ gv.g_grafito.op }};transition:opacity .6s ease;color:#F5F2EC">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,1.8vw,26px);line-height:1.1">Traje gris grafito</span>
+                <a href="{{ gv.g_grafito.href }}" onClick="{{ gv.g_grafito.stop }}" style="pointer-events:{{ gv.g_grafito.pe }};margin-top:8px;display:inline-flex;align-items:center;min-height:32px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8">Consultar disponibilidad →</a>
+              </figcaption>
+            </figure></sc-if>
+          <sc-if value="{{ gv.g_detalle_mono.show }}" hint-placeholder-val="{{ true }}"><figure onMouseEnter="{{ gv.g_detalle_mono.enter }}" onMouseLeave="{{ gv.g_detalle_mono.leave }}" onClick="{{ gv.g_detalle_mono.open }}" onKeyDown="{{ gv.g_detalle_mono.key }}" role="button" tabIndex="0" aria-label="Ampliar foto: Moño y solapa" style="margin:0;grid-column:{{ gv.g_detalle_mono.gc }};grid-row:{{ gv.g_detalle_mono.gr }};position:relative;overflow:hidden;background:#DDD4C5;cursor:zoom-in">
+              <div style="position:absolute;inset:0;transform:scale({{ gv.g_detalle_mono.scale }});transition:transform 1.2s cubic-bezier(.2,.7,.2,1)"><img src="{{ gv.g_detalle_mono.src }}" alt="Moño y solapa" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover;object-position:{{ gv.g_detalle_mono.pos }}"></div>
+              <figcaption style="position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(14px,1.8vw,24px);background:linear-gradient(180deg,rgba(17,17,17,0) 40%,rgba(17,17,17,.78) 100%);opacity:{{ gv.g_detalle_mono.op }};transition:opacity .6s ease;color:#F5F2EC">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,1.8vw,26px);line-height:1.1">Moño y solapa</span>
+                <a href="{{ gv.g_detalle_mono.href }}" onClick="{{ gv.g_detalle_mono.stop }}" style="pointer-events:{{ gv.g_detalle_mono.pe }};margin-top:8px;display:inline-flex;align-items:center;min-height:32px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8">Consultar disponibilidad →</a>
+              </figcaption>
+            </figure></sc-if>
+          <sc-if value="{{ gv.g_novio_2.show }}" hint-placeholder-val="{{ true }}"><figure onMouseEnter="{{ gv.g_novio_2.enter }}" onMouseLeave="{{ gv.g_novio_2.leave }}" onClick="{{ gv.g_novio_2.open }}" onKeyDown="{{ gv.g_novio_2.key }}" role="button" tabIndex="0" aria-label="Ampliar foto: Preparación del novio" style="margin:0;grid-column:{{ gv.g_novio_2.gc }};grid-row:{{ gv.g_novio_2.gr }};position:relative;overflow:hidden;background:#DDD4C5;cursor:zoom-in">
+              <div style="position:absolute;inset:0;transform:scale({{ gv.g_novio_2.scale }});transition:transform 1.2s cubic-bezier(.2,.7,.2,1)"><img src="{{ gv.g_novio_2.src }}" alt="Preparación del novio" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover;object-position:{{ gv.g_novio_2.pos }}"></div>
+              <figcaption style="position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(14px,1.8vw,24px);background:linear-gradient(180deg,rgba(17,17,17,0) 40%,rgba(17,17,17,.78) 100%);opacity:{{ gv.g_novio_2.op }};transition:opacity .6s ease;color:#F5F2EC">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,1.8vw,26px);line-height:1.1">Preparación del novio</span>
+                <a href="{{ gv.g_novio_2.href }}" onClick="{{ gv.g_novio_2.stop }}" style="pointer-events:{{ gv.g_novio_2.pe }};margin-top:8px;display:inline-flex;align-items:center;min-height:32px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8">Consultar disponibilidad →</a>
+              </figcaption>
+            </figure></sc-if>
+          <sc-if value="{{ gv.g_nino_2.show }}" hint-placeholder-val="{{ true }}"><figure onMouseEnter="{{ gv.g_nino_2.enter }}" onMouseLeave="{{ gv.g_nino_2.leave }}" onClick="{{ gv.g_nino_2.open }}" onKeyDown="{{ gv.g_nino_2.key }}" role="button" tabIndex="0" aria-label="Ampliar foto: Pajecito" style="margin:0;grid-column:{{ gv.g_nino_2.gc }};grid-row:{{ gv.g_nino_2.gr }};position:relative;overflow:hidden;background:#DDD4C5;cursor:zoom-in">
+              <div style="position:absolute;inset:0;transform:scale({{ gv.g_nino_2.scale }});transition:transform 1.2s cubic-bezier(.2,.7,.2,1)"><img src="{{ gv.g_nino_2.src }}" alt="Pajecito" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover;object-position:{{ gv.g_nino_2.pos }}"></div>
+              <figcaption style="position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(14px,1.8vw,24px);background:linear-gradient(180deg,rgba(17,17,17,0) 40%,rgba(17,17,17,.78) 100%);opacity:{{ gv.g_nino_2.op }};transition:opacity .6s ease;color:#F5F2EC">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,1.8vw,26px);line-height:1.1">Pajecito</span>
+                <a href="{{ gv.g_nino_2.href }}" onClick="{{ gv.g_nino_2.stop }}" style="pointer-events:{{ gv.g_nino_2.pe }};margin-top:8px;display:inline-flex;align-items:center;min-height:32px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8">Consultar disponibilidad →</a>
+              </figcaption>
+            </figure></sc-if>
+          <sc-if value="{{ gv.g_padrinos_2.show }}" hint-placeholder-val="{{ true }}"><figure onMouseEnter="{{ gv.g_padrinos_2.enter }}" onMouseLeave="{{ gv.g_padrinos_2.leave }}" onClick="{{ gv.g_padrinos_2.open }}" onKeyDown="{{ gv.g_padrinos_2.key }}" role="button" tabIndex="0" aria-label="Ampliar foto: Novio y padrinos" style="margin:0;grid-column:{{ gv.g_padrinos_2.gc }};grid-row:{{ gv.g_padrinos_2.gr }};position:relative;overflow:hidden;background:#DDD4C5;cursor:zoom-in">
+              <div style="position:absolute;inset:0;transform:scale({{ gv.g_padrinos_2.scale }});transition:transform 1.2s cubic-bezier(.2,.7,.2,1)"><img src="{{ gv.g_padrinos_2.src }}" alt="Novio y padrinos" loading="lazy" style="width:100%;height:100%;display:block;object-fit:cover;object-position:{{ gv.g_padrinos_2.pos }}"></div>
+              <figcaption style="position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(14px,1.8vw,24px);background:linear-gradient(180deg,rgba(17,17,17,0) 40%,rgba(17,17,17,.78) 100%);opacity:{{ gv.g_padrinos_2.op }};transition:opacity .6s ease;color:#F5F2EC">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,1.8vw,26px);line-height:1.1">Novio y padrinos</span>
+                <a href="{{ gv.g_padrinos_2.href }}" onClick="{{ gv.g_padrinos_2.stop }}" style="pointer-events:{{ gv.g_padrinos_2.pe }};margin-top:8px;display:inline-flex;align-items:center;min-height:32px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8">Consultar disponibilidad →</a>
+              </figcaption>
+            </figure></sc-if>
         </div>
       </div>
     </section>
@@ -336,15 +401,41 @@ details[open]>summary>span{transform:rotate(45deg)}
         <ol data-reveal="" style="position:relative;list-style:none;margin:clamp(48px,6vw,88px) 0 0;padding:0;display:grid;grid-template-columns:{{ steps.cols }};gap:{{ steps.gap }}">
           <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><li aria-hidden="true" style="position:absolute;background:#DDD4C5;left:28px;top:28px;bottom:40px;width:1px"></li></sc-if>
           <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}"><li aria-hidden="true" style="position:absolute;background:#DDD4C5;top:28px;left:10%;right:10%;height:1px"></li></sc-if>
-          <sc-for list="{{ stepList }}" as="s" hint-placeholder-count="5">
-            <li style="position:relative;display:flex;flex-direction:{{ steps.dir }};align-items:{{ steps.align }};text-align:{{ steps.text }};gap:{{ steps.innerGap }}">
-              <span style="flex:none;width:56px;height:56px;border-radius:50%;border:1px solid #765E36;background:#F5F2EC;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:#765E36">{{ s.n }}</span>
+          <li style="position:relative;display:flex;flex-direction:{{ steps.dir }};align-items:{{ steps.align }};text-align:{{ steps.text }};gap:{{ steps.innerGap }}">
+              <span style="flex:none;width:56px;height:56px;border-radius:50%;border:1px solid #765E36;background:#F5F2EC;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:#765E36">01</span>
               <div style="padding-top:{{ steps.textPad }}">
-                <h3 style="font-size:13px;font-weight:600;letter-spacing:.24em;text-transform:uppercase">{{ s.t }}</h3>
-                <p style="margin-top:10px;font-size:16px;line-height:1.55;color:#4A4642;max-width:240px;text-wrap:pretty">{{ s.d }}</p>
+                <h3 style="font-size:13px;font-weight:600;letter-spacing:.24em;text-transform:uppercase">Consultá</h3>
+                <p style="margin-top:10px;font-size:16px;line-height:1.55;color:#4A4642;max-width:240px;text-wrap:pretty">Contanos qué evento tenés y para qué fecha.</p>
               </div>
             </li>
-          </sc-for>
+          <li style="position:relative;display:flex;flex-direction:{{ steps.dir }};align-items:{{ steps.align }};text-align:{{ steps.text }};gap:{{ steps.innerGap }}">
+              <span style="flex:none;width:56px;height:56px;border-radius:50%;border:1px solid #765E36;background:#F5F2EC;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:#765E36">02</span>
+              <div style="padding-top:{{ steps.textPad }}">
+                <h3 style="font-size:13px;font-weight:600;letter-spacing:.24em;text-transform:uppercase">Elegí</h3>
+                <p style="margin-top:10px;font-size:16px;line-height:1.55;color:#4A4642;max-width:240px;text-wrap:pretty">Te ayudamos a encontrar el estilo adecuado.</p>
+              </div>
+            </li>
+          <li style="position:relative;display:flex;flex-direction:{{ steps.dir }};align-items:{{ steps.align }};text-align:{{ steps.text }};gap:{{ steps.innerGap }}">
+              <span style="flex:none;width:56px;height:56px;border-radius:50%;border:1px solid #765E36;background:#F5F2EC;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:#765E36">03</span>
+              <div style="padding-top:{{ steps.textPad }}">
+                <h3 style="font-size:13px;font-weight:600;letter-spacing:.24em;text-transform:uppercase">Probá</h3>
+                <p style="margin-top:10px;font-size:16px;line-height:1.55;color:#4A4642;max-width:240px;text-wrap:pretty">Probamos talles y combinaciones.</p>
+              </div>
+            </li>
+          <li style="position:relative;display:flex;flex-direction:{{ steps.dir }};align-items:{{ steps.align }};text-align:{{ steps.text }};gap:{{ steps.innerGap }}">
+              <span style="flex:none;width:56px;height:56px;border-radius:50%;border:1px solid #765E36;background:#F5F2EC;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:#765E36">04</span>
+              <div style="padding-top:{{ steps.textPad }}">
+                <h3 style="font-size:13px;font-weight:600;letter-spacing:.24em;text-transform:uppercase">Reservá</h3>
+                <p style="margin-top:10px;font-size:16px;line-height:1.55;color:#4A4642;max-width:240px;text-wrap:pretty">Con una seña congelás el precio y dejamos tu conjunto listo para la fecha.</p>
+              </div>
+            </li>
+          <li style="position:relative;display:flex;flex-direction:{{ steps.dir }};align-items:{{ steps.align }};text-align:{{ steps.text }};gap:{{ steps.innerGap }}">
+              <span style="flex:none;width:56px;height:56px;border-radius:50%;border:1px solid #765E36;background:#F5F2EC;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:#765E36">05</span>
+              <div style="padding-top:{{ steps.textPad }}">
+                <h3 style="font-size:13px;font-weight:600;letter-spacing:.24em;text-transform:uppercase">Disfrutá</h3>
+                <p style="margin-top:10px;font-size:16px;line-height:1.55;color:#4A4642;max-width:240px;text-wrap:pretty">Llegás al evento con tu look listo.</p>
+              </div>
+            </li>
         </ol>
       </div>
     </section>
@@ -492,7 +583,7 @@ details[open]>summary>span{transform:rotate(45deg)}
       </nav>
       <div style="display:flex;flex-direction:column;gap:8px;font-size:15px">
         <p style="font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#C9AE7E;margin-bottom:6px">Contacto</p>
-        <a href="{{ wa.general }}" target="{{ waTarget }}" rel="noopener">WhatsApp · {{ waDisplay }}</a>
+        <a href="{{ wa.general }}" target="{{ waTarget }}" rel="noopener">WhatsApp · +54 9 341 605-4619</a>
         <a href="{{ social.instagram }}" target="_blank" rel="noopener">Instagram</a>
         <a href="{{ social.facebook }}" target="_blank" rel="noopener">Facebook</a>
       </div>
@@ -507,14 +598,14 @@ details[open]>summary>span{transform:rotate(45deg)}
   <sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
     <div role="dialog" aria-modal="true" aria-label="Foto ampliada: {{ lb.label }}" onClick="{{ lbClose }}" style="position:fixed;inset:0;z-index:90;background:rgba(10,10,9,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:64px 16px 28px;box-sizing:border-box;cursor:zoom-out">
       <button onClick="{{ lbClose }}" aria-label="Cerrar" style="position:absolute;top:12px;right:12px;width:48px;height:48px;background:none;border:0;color:#F5F2EC;font-size:32px;line-height:1;cursor:pointer">×</button>
-      {{ lbImg }}
+      <sc-for list="{{ lbList }}" as="p" hint-placeholder-count="0"><img src="{{ p.big }}" alt="{{ p.label }}" loading="lazy" onClick="{{ lbStop }}" style="display:block;max-width:min(100%,1200px);max-height:calc(100svh - 190px);width:auto;height:auto;object-fit:contain;cursor:default;box-shadow:0 30px 80px rgba(0,0,0,.5)"></sc-for>
       <div onClick="{{ lbStop }}" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 28px;color:#F5F2EC;cursor:default;text-align:center">
-        <span style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.1">{{ lb.label }}</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.1"><sc-if value="{{ lbc.g_smoking_negro }}" hint-placeholder-val="{{ false }}">Smoking negro</sc-if><sc-if value="{{ lbc.g_novio_1 }}" hint-placeholder-val="{{ false }}">Traje de novio</sc-if><sc-if value="{{ lbc.g_azul_noche }}" hint-placeholder-val="{{ false }}">Traje azul noche</sc-if><sc-if value="{{ lbc.g_padrinos_1 }}" hint-placeholder-val="{{ false }}">Padrinos coordinados</sc-if><sc-if value="{{ lbc.g_nino_1 }}" hint-placeholder-val="{{ false }}">Traje infantil</sc-if><sc-if value="{{ lbc.g_grafito }}" hint-placeholder-val="{{ false }}">Traje gris grafito</sc-if><sc-if value="{{ lbc.g_detalle_mono }}" hint-placeholder-val="{{ false }}">Moño y solapa</sc-if><sc-if value="{{ lbc.g_novio_2 }}" hint-placeholder-val="{{ false }}">Preparación del novio</sc-if><sc-if value="{{ lbc.g_nino_2 }}" hint-placeholder-val="{{ false }}">Pajecito</sc-if><sc-if value="{{ lbc.g_padrinos_2 }}" hint-placeholder-val="{{ false }}">Novio y padrinos</sc-if></span>
         <a href="{{ lb.href }}" onClick="{{ lb.ask }}" style="display:inline-flex;align-items:center;min-height:44px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8;border-bottom:1px solid #C9AE7E">Consultar disponibilidad →</a>
       </div>
       <button onClick="{{ lbPrev }}" aria-label="Foto anterior" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;background:rgba(245,242,236,.1);border:1px solid rgba(245,242,236,.45);color:#F5F2EC;font-size:22px;cursor:pointer">←</button>
       <button onClick="{{ lbNext }}" aria-label="Foto siguiente" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;background:rgba(245,242,236,.1);border:1px solid rgba(245,242,236,.45);color:#F5F2EC;font-size:22px;cursor:pointer">→</button>
-      <p style="position:absolute;top:24px;left:20px;font-size:12px;letter-spacing:.2em;color:#C9AE7E">{{ lb.count }}</p>
+      <p style="position:absolute;top:24px;left:20px;font-size:12px;letter-spacing:.2em;color:#C9AE7E" data-count="{{ lb.count }}"></p>
     </div>
   </sc-if>
 
@@ -523,15 +614,18 @@ details[open]>summary>span{transform:rotate(45deg)}
     <div role="dialog" aria-label="Consulta rápida por WhatsApp" style="position:fixed;z-index:70;right:{{ panel.right }};left:{{ panel.left }};bottom:{{ panel.bottom }};width:{{ panel.width }};background:#F5F2EC;color:#111111;box-shadow:0 30px 80px -20px rgba(0,0,0,.45);border:1px solid #DDD4C5;padding:26px">
       <div style="display:flex;justify-content:space-between;align-items:start;gap:12px">
         <div>
-          <p style="font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:#765E36">{{ panelEyebrow }}</p>
-          <p style="margin-top:8px;font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1.05">{{ panelTitle }}</p>
+          <p style="font-size:12px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:#765E36"><sc-if value="{{ pe.general }}" hint-placeholder-val="{{ true }}">Consulta rápida</sc-if><sc-if value="{{ pe.novio }}" hint-placeholder-val="{{ false }}">Novios</sc-if><sc-if value="{{ pe.padrinos }}" hint-placeholder-val="{{ false }}">Padrinos</sc-if><sc-if value="{{ pe.graduacion }}" hint-placeholder-val="{{ false }}">Graduación</sc-if><sc-if value="{{ pe.evento }}" hint-placeholder-val="{{ false }}">Eventos y fiestas</sc-if><sc-if value="{{ pe.ninos }}" hint-placeholder-val="{{ false }}">Niños</sc-if><sc-if value="{{ pe.talle }}" hint-placeholder-val="{{ false }}">Consulta de talle</sc-if></p>
+          <p style="margin-top:8px;font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1.05"><sc-if value="{{ showTopics }}" hint-placeholder-val="{{ true }}">¿Para qué ocasión?</sc-if><sc-if value="{{ dOnly }}" hint-placeholder-val="{{ false }}">¿Cuándo es tu evento?</sc-if></p>
         </div>
         <button onClick="{{ togglePanel }}" aria-label="Cerrar" style="width:44px;height:44px;margin:-10px -12px 0 0;background:none;border:0;font-size:24px;cursor:pointer;color:#111111">×</button>
       </div>
       <sc-if value="{{ showTopics }}" hint-placeholder-val="{{ true }}"><div style="margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
-        <sc-for list="{{ topics }}" as="t" hint-placeholder-count="6">
-          <button onClick="{{ t.onClick }}" aria-pressed="{{ t.active }}" style="min-height:46px;padding:0 10px;background:{{ t.bg }};color:{{ t.fg }};border:1px solid {{ t.line }};font-family:'Manrope',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .25s">{{ t.label }}</button>
-        </sc-for>
+        <button onClick="{{ tp.novio.onClick }}" aria-pressed="{{ tp.novio.active }}" style="min-height:46px;padding:0 10px;background:{{ tp.novio.bg }};color:{{ tp.novio.fg }};border:1px solid {{ tp.novio.line }};font-family:'Manrope',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .25s">Novios</button>
+        <button onClick="{{ tp.padrinos.onClick }}" aria-pressed="{{ tp.padrinos.active }}" style="min-height:46px;padding:0 10px;background:{{ tp.padrinos.bg }};color:{{ tp.padrinos.fg }};border:1px solid {{ tp.padrinos.line }};font-family:'Manrope',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .25s">Padrinos</button>
+        <button onClick="{{ tp.graduacion.onClick }}" aria-pressed="{{ tp.graduacion.active }}" style="min-height:46px;padding:0 10px;background:{{ tp.graduacion.bg }};color:{{ tp.graduacion.fg }};border:1px solid {{ tp.graduacion.line }};font-family:'Manrope',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .25s">Graduación</button>
+        <button onClick="{{ tp.evento.onClick }}" aria-pressed="{{ tp.evento.active }}" style="min-height:46px;padding:0 10px;background:{{ tp.evento.bg }};color:{{ tp.evento.fg }};border:1px solid {{ tp.evento.line }};font-family:'Manrope',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .25s">Evento</button>
+        <button onClick="{{ tp.ninos.onClick }}" aria-pressed="{{ tp.ninos.active }}" style="min-height:46px;padding:0 10px;background:{{ tp.ninos.bg }};color:{{ tp.ninos.fg }};border:1px solid {{ tp.ninos.line }};font-family:'Manrope',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .25s">Niños</button>
+        <button onClick="{{ tp.talle.onClick }}" aria-pressed="{{ tp.talle.active }}" style="min-height:46px;padding:0 10px;background:{{ tp.talle.bg }};color:{{ tp.talle.fg }};border:1px solid {{ tp.talle.line }};font-family:'Manrope',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .25s">Consultar talle</button>
       </div></sc-if>
       <label style="margin-top:18px;display:block;font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#4A4642">Fecha del evento
         <span style="position:relative;display:block;margin-top:8px;width:100%">
@@ -649,16 +743,20 @@ class Component extends DCLogic {
     const ask = {};
     Object.keys(LBL).forEach(k => ask[k] = (ev) => this.askFor(k, ev));
     const dOnly = !!this.state.dateOnly && LBL[topic];
+    const pe = { general: !dOnly }; if (dOnly) pe[topic] = true;
 
     const topics = [['novio', 'Novios'], ['padrinos', 'Padrinos'], ['graduacion', 'Graduación'], ['evento', 'Evento'], ['ninos', 'Niños'], ['talle', 'Consultar talle']].map(([k, label]) => {
       const a = topic === k;
       return { label, active: a, bg: a ? '#111111' : 'transparent', fg: a ? '#F5F2EC' : '#111111', line: a ? '#111111' : '#DDD4C5', onClick: () => this.setState({ topic: a ? 'general' : k }) };
     });
 
+    const F_KEYS = ['todos', 'trajes', 'smokings', 'novios', 'padrinos', 'ninos'];
+    const tp = {}; topics.forEach((x, i) => tp[['novio', 'padrinos', 'graduacion', 'evento', 'ninos', 'talle'][i]] = x);
     const filters = [['todos', 'Todos'], ['trajes', 'Trajes'], ['smokings', 'Smokings'], ['novios', 'Novios'], ['padrinos', 'Padrinos'], ['ninos', 'Niños']].map(([k, label]) => {
       const a = filter === k;
       return { label, active: a, bg: a ? '#111111' : 'transparent', fg: a ? '#F5F2EC' : '#111111', line: a ? '#111111' : '#DDD4C5', onClick: () => this.setState({ filter: k, hov: -1 }) };
     });
+    const fl = {}; filters.forEach((f, i) => fl[F_KEYS[i]] = f);
     const catWa = { trajes: 'general', smokings: 'evento', novios: 'novio', padrinos: 'padrinos', ninos: 'ninos' };
     const items = [
       ['g-smoking-negro', 'smokings', 'Smoking negro', 'SMOKING NEGRO · vertical'],
@@ -704,6 +802,9 @@ class Component extends DCLogic {
       };
     });
     this._galN = gallery.length;
+    const gv = {}; ["g-smoking-negro","g-novio-1","g-azul-noche","g-padrinos-1","g-nino-1","g-grafito","g-detalle-mono","g-novio-2","g-nino-2","g-padrinos-2"].forEach(id => gv[id.replace(/-/g, '_')] = { show: false });
+    gallery.forEach(g => gv[g.id.replace(/-/g, '_')] = Object.assign({ show: true }, g));
+    const lbc = {}; { const li = this.state.lb; if (li >= 0 && gallery[li]) lbc[gallery[li].id.replace(/-/g, '_')] = true; }
     const lbi = this.state.lb;
     const lbItem = lbi >= 0 && gallery[lbi] ? gallery[lbi] : null;
     const lb = lbItem ? { big: lbItem.big, label: lbItem.label, href: lbItem.href, ask: (e) => { e.stopPropagation(); this.setState({ lb: -1 }); this.askFor(catWa[items[lbi][1]], e); }, count: `${lbi + 1} / ${gallery.length}` } : { big: '', label: '', href: '', ask: null, count: '' };
@@ -724,10 +825,10 @@ class Component extends DCLogic {
       : { cols: 'repeat(5,minmax(0,1fr))', gap: '24px', dir: 'column', align: 'center', text: 'center', innerGap: '26px', textPad: '0', line: 'top:28px;left:10%;right:10%;height:1px' };
 
     return {
-      isMobile: m, isDesktop: !m, menuOpen: menu && m, waTarget: (typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) ? '_self' : '_blank', noDate: !date, dateColor: date ? '#111111' : 'transparent', noDateStr: date ? 'false' : 'true', panelOpen: panel, ask, askGeneral: (ev) => this.askFor('general', ev), dateRef: this.dateRef, showTopics: !dOnly,
+      isMobile: m, isDesktop: !m, menuOpen: menu && m, waTarget: (typeof navigator !== 'undefined' && /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) ? '_self' : '_blank', noDate: !date, dateColor: date ? '#111111' : 'transparent', noDateStr: date ? 'false' : 'true', panelOpen: panel, dOnly: !!dOnly, ask, askGeneral: (ev) => this.askFor('general', ev), dateRef: this.dateRef, showTopics: !dOnly,
       panelEyebrow: dOnly ? LBL[topic] : 'Consulta rápida', panelTitle: dOnly ? '¿Cuándo es tu evento?' : '¿Para qué ocasión?',
       hdr, wa, topics, filters, gallery, stepList, steps, date,
-      lbOpen: !!lbItem, lb, lbImg: lbItem ? React.createElement('img', { key: lb.big, src: lb.big, alt: lb.label, onClick: lbStop, style: { display: 'block', maxWidth: 'min(100%,1200px)', maxHeight: 'calc(100svh - 190px)', width: 'auto', height: 'auto', objectFit: 'contain', cursor: 'default', boxShadow: '0 30px 80px rgba(0,0,0,.5)' } }) : null, lbClose, lbStop, lbPrev, lbNext,
+      lbOpen: !!lbItem, lb, lbList: lbItem ? [lb] : [], lbc, gv, fl, tp, pe, lbImgUnused: lbItem ? React.createElement('img', { key: lb.big, src: lb.big, alt: lb.label, onClick: lbStop, style: { display: 'block', maxWidth: 'min(100%,1200px)', maxHeight: 'calc(100svh - 190px)', width: 'auto', height: 'auto', objectFit: 'contain', cursor: 'default', boxShadow: '0 30px 80px rgba(0,0,0,.5)' } }) : null, lbClose, lbStop, lbPrev, lbNext,
       oc: m
         ? { s1: 6, s2: 6, s3: 3, s4: 3, s5: 6, hBig: '520px', hMid: '380px', hSmall: '320px' }
         : { s1: 3, s2: 3, s3: 2, s4: 2, s5: 2, hBig: '620px', hMid: '620px', hSmall: '460px' },

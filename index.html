@@ -117,16 +117,17 @@ details[open]>summary>span{transform:rotate(45deg)}
           <img data-kb="1" src="./img/nino-traje-azul.webp" alt="Niño con traje azul" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0%;transform-origin:50% 0%;transform:scale(1.16);filter:sepia(.28) saturate(.85) contrast(1.05)">
         </div>
       </div>
-      <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 65% at 50% 50%, rgba(14,10,6,.45) 0%, rgba(14,10,6,.82) 100%)"></div>
+      <div style="position:absolute;inset:0;pointer-events:none;background:rgba(10,8,6,.38)"></div>
+      <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 55% at 50% 52%, rgba(10,8,6,.62) 0%, rgba(10,8,6,.35) 60%, rgba(10,8,6,.55) 100%)"></div>
       <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg, rgba(10,8,6,.5) 0%, rgba(10,8,6,0) 25%, rgba(10,8,6,0) 70%, rgba(10,8,6,.7) 100%)"></div>
 
-      <div data-fade="" style="position:absolute;top:76px;left:0;right:0;bottom:132px;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:safe center;overflow:hidden;text-align:center;padding:0 22px;text-shadow:0 2px 30px rgba(0,0,0,.5)">
-        <p data-t="k" style="font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.34em;text-transform:uppercase;color:#C9AE7E">{{ hs.kicker }}</p>
+      <div data-fade="" style="position:absolute;top:76px;left:0;right:0;bottom:132px;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:safe center;overflow:hidden;text-align:center;padding:0 22px;text-shadow:0 1px 3px rgba(0,0,0,.7), 0 4px 30px rgba(0,0,0,.6)">
+        <p data-t="k" style="font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:#E2CA9C">{{ hs.kicker }}</p>
         <p aria-hidden="true" style="margin-top:clamp(12px,2vh,20px);font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:clamp(44px,min(8vw,11vh),136px);line-height:.92;letter-spacing:-.01em">
           <span style="display:block;overflow:hidden;padding-bottom:.08em"><span data-t="1" style="display:block">{{ hs.l1 }}</span></span>
           <span style="display:block;overflow:hidden;padding-bottom:.08em"><span data-t="2" style="display:block">{{ hs.l2 }}</span></span>
         </p>
-        <p data-t="3" style="margin-top:clamp(14px,2.4vh,24px);font-family:'Jost',sans-serif;font-weight:300;font-size:clamp(13px,1vw,15px);letter-spacing:.22em;text-transform:uppercase;color:#E6D6B8">{{ hs.sub }}</p>
+        <p data-t="3" style="margin-top:clamp(14px,2.4vh,24px);font-family:'Jost',sans-serif;font-weight:500;font-size:clamp(13px,1vw,15px);letter-spacing:.2em;text-transform:uppercase;color:#F2E8D6">{{ hs.sub }}</p>
         <h1 data-t="s" style="margin-top:8px;font-family:'Jost',sans-serif;font-weight:500;font-size:clamp(12px,1vw,14px);line-height:1.5;letter-spacing:{{ hero.ls }};text-transform:uppercase;color:#F5F2EC">Alquiler de trajes en Rosario<span style="color:#C9AE7E"> | </span>Santa Fe</h1>
         <div data-t="s" style="margin-top:clamp(16px,3vh,36px);display:flex;flex-wrap:wrap;justify-content:center;gap:10px;width:{{ hero.btnW }};max-width:{{ hero.ctaMax }};text-shadow:none">
           <a href="{{ wa.general }}" onClick="{{ askGeneral }}" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 32px;width:{{ hero.btnW }};background:#F5F2EC;color:#111111;border-radius:999px;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;transition:background .3s" style-hover="background:#E6D6B8;color:#111111"><span style="width:8px;height:8px;border-radius:50%;background:#25D366"></span>Consultar disponibilidad</a>
@@ -139,11 +140,11 @@ details[open]>summary>span{transform:rotate(45deg)}
           <sc-if value="{{ hPaused }}" hint-placeholder-val="{{ false }}"><span style="width:0;height:0;margin-left:3px;border-left:10px solid currentColor;border-top:6px solid transparent;border-bottom:6px solid transparent"></span></sc-if>
           <sc-if value="{{ hPlaying }}" hint-placeholder-val="{{ true }}"><span style="width:2px;height:12px;background:currentColor"></span><span style="width:2px;height:12px;background:currentColor"></span></sc-if>
         </button>
-        <button onClick="{{ hGo0 }}" style="width:{{ hero.tabW }};padding:10px 0;background:none;border:0;color:#F5F2EC;opacity:{{ hOp0 }};cursor:pointer;text-align:center;font:inherit;transition:opacity .4s">
+        <button onClick="{{ hGo0 }}" style="width:{{ hero.tabW }};padding:10px 0;background:none;border:0;color:#F5F2EC;text-shadow:0 1px 3px rgba(0,0,0,.7);opacity:{{ hOp0 }};cursor:pointer;text-align:center;font:inherit;transition:opacity .4s">
           <span style="display:block;font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:.24em;text-transform:uppercase">Barón</span>
           <span style="position:relative;display:block;height:1px;margin-top:10px;background:rgba(245,242,236,.3)"><span data-bar="0" style="position:absolute;inset:-0.5px 0;background:#C9AE7E;transform-origin:0 50%;transform:scaleX(0)"></span></span>
         </button>
-        <button onClick="{{ hGo1 }}" style="width:{{ hero.tabW }};padding:10px 0;background:none;border:0;color:#F5F2EC;opacity:{{ hOp1 }};cursor:pointer;text-align:center;font:inherit;transition:opacity .4s">
+        <button onClick="{{ hGo1 }}" style="width:{{ hero.tabW }};padding:10px 0;background:none;border:0;color:#F5F2EC;text-shadow:0 1px 3px rgba(0,0,0,.7);opacity:{{ hOp1 }};cursor:pointer;text-align:center;font:inherit;transition:opacity .4s">
           <span style="display:block;font-family:'Jost',sans-serif;font-size:12px;font-weight:500;letter-spacing:.24em;text-transform:uppercase">Baroncito</span>
           <span style="position:relative;display:block;height:1px;margin-top:10px;background:rgba(245,242,236,.3)"><span data-bar="1" style="position:absolute;inset:-0.5px 0;background:#C9AE7E;transform-origin:0 50%;transform:scaleX(0)"></span></span>
         </button>
@@ -954,7 +955,7 @@ class Component extends DCLogic {
         ? { cols: 'minmax(0,1fr)', pad: '72px 22px 48px', mapH: '360px' }
         : { cols: 'minmax(0,1fr) minmax(0,1fr)', pad: 'clamp(72px,9vw,140px) clamp(24px,5vw,80px)', mapH: '620px' },
       hero: m ? { ls: '.12em', btnW: '100%', tabW: '96px', ctaMax: '420px' } : { ls: '.2em', btnW: 'auto', tabW: '140px', ctaMax: 'none' },
-      heroRef: this.heroRef, hs: this.heroSlides[this.state.hi || 0], hPaused: !!this.state.hp, hPlaying: !this.state.hp, hPauseLabel: this.state.hp ? 'Reanudar animación' : 'Pausar animación', hToggle: () => this.heroToggle(), hGo0: () => this.heroGo(0), hGo1: () => this.heroGo(1), hOp0: (this.state.hi || 0) === 0 ? 1 : 0.5, hOp1: this.state.hi === 1 ? 1 : 0.5,
+      heroRef: this.heroRef, hs: this.heroSlides[this.state.hi || 0], hPaused: !!this.state.hp, hPlaying: !this.state.hp, hPauseLabel: this.state.hp ? 'Reanudar animación' : 'Pausar animación', hToggle: () => this.heroToggle(), hGo0: () => this.heroGo(0), hGo1: () => this.heroGo(1), hOp0: (this.state.hi || 0) === 0 ? 1 : 0.72, hOp1: this.state.hi === 1 ? 1 : 0.72,
       mqText: 'Smokings  ·  Novios  ·  Padrinos  ·  Graduados  ·  Pajes  ·  Comuniones  ·  Eventos de gala  ·  Rosario, Santa Fe  ·  Smokings  ·  Novios  ·  Padrinos  ·  Graduados  ·  Pajes  ·  Comuniones  ·  Eventos de gala  ·  Rosario, Santa Fe  ·',
       fab: { offset: m ? '18px' : '28px', size: m ? '60px' : '64px' },
       panel: m

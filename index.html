@@ -70,10 +70,6 @@ details[open]>summary>span{transform:rotate(45deg)}
           <a href="#como-funciona" style="color:inherit" style-hover="opacity:.6">Cómo funciona</a>
           <a href="#contacto" style="color:inherit" style-hover="opacity:.6">Contacto</a>
         </nav>
-        <a href="{{ wa.general }}" onClick="{{ askGeneral }}" style="display:flex;align-items:center;gap:10px;padding:13px 20px;border:1px solid {{ hdr.btnLine }};color:inherit;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;transition:all .3s" style-hover="background:#C9AE7E;border-color:#C9AE7E;color:#111111">
-          <span style="width:7px;height:7px;border-radius:50%;background:#25D366"></span>
-          Consultar por WhatsApp
-        </a>
       </sc-if>
       <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
         <button onClick="{{ toggleMenu }}" aria-label="Abrir menú" style="width:48px;height:48px;margin-right:-12px;background:none;border:0;color:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px">
@@ -726,16 +722,16 @@ class Component extends DCLogic {
   }
   heroStop() {
     window.removeEventListener('scroll', this._hp);
-    clearTimeout(this._ht1); clearTimeout(this._ht3);
+    clearTimeout(this._ht1); clearTimeout(this._ht3); clearTimeout(this._ht4);
     [this.hmq, this.hprog, ...Object.values(this.hkbs || {})].forEach(a => a && a.cancel());
   }
   heroPlay(i, first, base) {
     const dur = Math.max(5, this.props.heroSeconds ?? 7) * 1000;
     this.hq('[data-slide]').forEach(el => {
       const on = +el.dataset.slide === i;
-      el.style.transition = first ? 'none' : 'opacity 1.6s ease';
-      el.style.opacity = on ? '1' : '0';
-      el.style.zIndex = on ? '1' : '0';
+      const from = getComputedStyle(el).opacity;
+      el.getAnimations().forEach(a => a.cancel());
+      el.animate([{ opacity: first ? (on ? 1 : 0) : from, zIndex: on ? 1 : 0 }, { opacity: on ? 1 : 0, zIndex: on ? 1 : 0 }], { duration: first ? 1 : 1600, fill: 'forwards', easing: 'ease' });
     });
     const img = this.hq('[data-kb="' + i + '"]')[0];
     if (img && !this.hrm) {
@@ -749,7 +745,7 @@ class Component extends DCLogic {
     const bar = this.hq('[data-bar="' + i + '"]')[0];
     if (bar) {
       this.hprog = bar.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: dur, delay: base, fill: 'forwards', easing: 'linear' });
-      this.hprog.onfinish = () => this.heroGo((this.state.hi + 1) % this.heroSlides.length);
+      this.hprog.onfinish = () => this.heroGo(((this.state.hi || 0) + 1) % this.heroSlides.length);
     }
     const gap = first ? 1000 : 320, E = 'cubic-bezier(.2,.7,.1,1)';
     this.hq('[data-t]').forEach(e => {
@@ -771,7 +767,10 @@ class Component extends DCLogic {
       e.getAnimations().forEach(a => a.cancel());
       e.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-10px)' }], { duration: 380, fill: 'forwards', easing: 'ease-in' });
     });
-    this._ht3 = setTimeout(() => this.setState({ hi: n }, () => { this.hbusy = false; this.heroPlay(n, false, 250); }), 400);
+    this._ht3 = setTimeout(() => {
+      this.setState({ hi: n });
+      this._ht4 = setTimeout(() => { this.hbusy = false; this.heroPlay(n, false, 250); }, 40);
+    }, 400);
   }
   heroToggle() {
     const p = !this.state.hp;

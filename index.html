@@ -107,10 +107,10 @@ details[open]>summary>span{transform:rotate(45deg)}
     <section ref="{{ heroRef }}" aria-label="Presentación" style="position:relative;height:100svh;min-height:560px;max-height:1100px;background:#000000;color:#F5F2EC;overflow:hidden">
       <div data-par="" style="position:absolute;top:0;left:0;right:0;bottom:-8%;will-change:transform">
         <div data-slide="0" style="position:absolute;inset:0;opacity:1;overflow:hidden">
-          <img data-kb="0" src="./img/hero-principal.webp" alt="Caballero con traje negro y moño" fetchpriority="high" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%;transform-origin:50% 30%;transform:scale(1.04);filter:sepia(.28) saturate(.85) contrast(1.05)">
+          <img data-kb="0" src="./img/hero-principal.webp" alt="Caballero con traje negro y moño" fetchpriority="high" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%;transform-origin:50% 20%;transform:scale(1.2);filter:sepia(.28) saturate(.85) contrast(1.05)">
         </div>
         <div data-slide="1" style="position:absolute;inset:0;opacity:0;overflow:hidden">
-          <img data-kb="1" src="./img/nino-traje-azul.webp" alt="Niño con traje azul" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0%;transform-origin:50% 0%;transform:scale(1.16);filter:sepia(.28) saturate(.85) contrast(1.05)">
+          <img data-kb="1" src="./img/nino-traje-azul.webp" alt="Niño con traje azul" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0%;transform-origin:50% 0%;transform:scale(1.2);filter:sepia(.28) saturate(.85) contrast(1.05)">
         </div>
       </div>
       <div style="position:absolute;inset:0;pointer-events:none;background:rgba(10,8,6,.38)"></div>
@@ -731,12 +731,13 @@ class Component extends DCLogic {
       const on = +el.dataset.slide === i;
       const from = getComputedStyle(el).opacity;
       el.getAnimations().forEach(a => a.cancel());
-      el.animate([{ opacity: first ? (on ? 1 : 0) : from, zIndex: on ? 1 : 0 }, { opacity: on ? 1 : 0, zIndex: on ? 1 : 0 }], { duration: first ? 1 : 1600, fill: 'forwards', easing: 'ease' });
+      el.style.zIndex = on ? '1' : '0';
+      el.animate([{ opacity: first ? (on ? 1 : 0) : from }, { opacity: on ? 1 : 0 }], { duration: first ? 1 : 1600, fill: 'forwards', easing: 'ease' });
     });
     const img = this.hq('[data-kb="' + i + '"]')[0];
     if (img && !this.hrm) {
       if (this.hkbs[i]) this.hkbs[i].cancel();
-      const z = i % 2 ? [1.16, 1.04] : [1.04, 1.16];
+      const z = [1.2, 1];
       this.hkbs[i] = img.animate([{ transform: 'scale(' + z[0] + ')' }, { transform: 'scale(' + z[1] + ')' }], { duration: dur + 1800, fill: 'forwards', easing: 'linear' });
       this.hkb = this.hkbs[i];
     }
